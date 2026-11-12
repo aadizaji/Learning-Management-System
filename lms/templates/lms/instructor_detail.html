@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% block page_title %}{{ instructor }} | Sematec LMS{% endblock %}
+{% block page_heading %}{% trans 'Instructor Profile' %}{% endblock %}
+
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'instructors' %}?instructor={{ instructor.pk }}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<a class="mg-back" href="{% url 'instructor_list' %}"><i class="bi bi-arrow-left"></i> {% trans 'All instructors' %}</a>
+<article class="mg-profile"><div class="mg-profile-banner"></div><div class="mg-profile-body">
+<div class="mg-profile-lead">{% if instructor.profile_img %}<img class="mg-avatar mg-avatar--large" src="{{ instructor.profile_img.url }}" alt="{{ instructor }}" />{% else %}<div class="mg-avatar mg-avatar--large">{{ instructor.first_name|slice:':1' }}{{ instructor.last_name|slice:':1' }}</div>{% endif %}<div class="mg-profile-lead-text"><h2>{{ instructor }}</h2><div class="mg-muted">Instructor #{{ instructor.pk }} · {{ instructor.get_educational_certification_display }}</div></div><div class="mg-profile-actions">{% if can_manage %}<a class="mg-button mg-button--outline" href="{% url 'edit_instructor' instructor.pk %}"><i class="bi bi-pencil"></i> {% trans 'Edit' %}</a>{% endif %}{% if can_manage %}<a class="mg-button mg-button--outline" href="{% url 'delete_instructor' instructor.pk %}"><i class="bi bi-trash"></i> {% trans 'Delete' %}</a>{% endif %}</div></div>
+<h3 class="mg-section-title">{% trans 'Instructor information' %}</h3><dl class="mg-detail-grid">
+<div class="mg-detail"><dt>{% trans 'First name' %}</dt><dd>{{ instructor.first_name }}</dd></div><div class="mg-detail"><dt>{% trans 'Last name' %}</dt><dd>{{ instructor.last_name }}</dd></div><div class="mg-detail"><dt>{% trans 'National code' %}</dt><dd>{{ instructor.national_code }}</dd></div>
+<div class="mg-detail"><dt>{% trans 'Birth date' %}</dt><dd>{{ instructor.birth_date|date:"Y-m-d" }}</dd></div><div class="mg-detail"><dt>{% trans 'Gender' %}</dt><dd>{{ instructor.get_gender_display }}</dd></div><div class="mg-detail"><dt>{% trans 'Education' %}</dt><dd>{{ instructor.get_educational_certification_display }}</dd></div>
+<div class="mg-detail"><dt>{% trans 'City' %}</dt><dd>{{ instructor.city }}</dd></div><div class="mg-detail"><dt>{% trans 'Phone' %}</dt><dd>{{ instructor.phone_number }}</dd></div><div class="mg-detail"><dt>{% trans 'Email' %}</dt><dd>{{ instructor.email }}</dd></div>
+<div class="mg-detail" style="grid-column:1/-1"><dt>{% trans 'Address' %}</dt><dd>{{ instructor.address|linebreaksbr }}</dd></div>
+</dl></div></article>
+<section class="mg-panel"><h3 class="mg-section-title" style="margin-top:0">{% trans 'Weekly teaching schedule' %}</h3><div class="mg-inline-list">{% for slot in schedules %}<a href="{% url 'course_detail' slot.course.pk %}"><i class="bi bi-calendar3"></i> {{ slot.course.title }} · {{ slot.get_weekday_display }} · {{ slot.start_time|time:"H:i" }}–{{ slot.end_time|time:"H:i" }}</a>{% empty %}<span>{% trans 'No scheduled classes yet.' %}</span>{% endfor %}</div></section>
+<section><h3 class="mg-section-title">{% trans 'Associated courses' %}</h3><div class="mg-grid">{% for course in courses %}{% include 'lms/_course_card.html' %}{% empty %}<div class="mg-empty"><h3>{% trans 'No courses assigned' %}</h3></div>{% endfor %}</div></section>
+<section class="mg-panel"><h3 class="mg-section-title">{% trans 'Instructor evaluations' %}</h3>
+{% for response in survey_responses %}<div class="mg-inline-list"><span><a href="{% url 'survey_course' response.course_id %}">{{ response.course.title }}</a> · {{ response.updated_at|date:'Y-m-d' }} · {% trans 'Average rating' %}: {{ response.average_rating|floatformat:1 }} / 5</span></div>
+{% empty %}<p class="mg-muted">{% trans 'No evaluations saved yet.' %}</p>{% endfor %}</section>
+{% endblock %}

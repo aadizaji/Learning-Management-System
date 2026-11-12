@@ -1,0 +1,52 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% load static %}
+{% block page_title %}{% trans 'Certificates | Sematec LMS' %}{% endblock %}
+{% block page_heading %}{% trans 'Certificates' %}{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/certificates.css' %}">{% endblock %}
+{% block content %}
+{% if can_manage %}<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'certificates' %}{% if request.GET.urlencode %}?{{ request.GET.urlencode }}{% endif %}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>{% endif %}
+
+<section class="cert-page">
+  <div class="cert-head">
+    <div><div class="cert-eyebrow"><i class="bi bi-patch-check-fill"></i> {% trans 'CERTIFICATE MANAGEMENT' %}</div>
+      
+      </div>
+    <a href="{% url 'certificate_create' %}" class="cert-button cert-primary"><i class="bi bi-plus-lg"></i> {% trans 'Issue new certificate' %}</a>
+  </div>
+  <div class="cert-stats">
+    <div class="cert-card cert-stat"><i class="bi bi-award"></i><div><span>{% trans 'Issued certificates' %}</span><strong>{{ total_count }}</strong></div></div>
+    <div class="cert-card cert-stat"><i class="bi bi-translate"></i><div><span>{% trans 'Export languages' %}</span><strong>2</strong></div></div>
+    <div class="cert-card cert-stat"><i class="bi bi-file-earmark-arrow-down"></i><div><span>{% trans 'File formats' %}</span><strong>{% trans 'PNG + PDF' %}</strong></div></div>
+  </div>
+  <section class="cert-card cert-list-card">
+    <div class="cert-list-heading"><h3>{% trans 'Issued certificates' %}</h3>
+      <form method="get" class="cert-search"><i class="bi bi-search"></i><input name="q" value="{{ search_query }}" placeholder="{% trans 'Search student, course or serial' %}"><button type="submit">{% trans 'Search' %}</button></form>
+    </div>
+    <div class="cert-table-wrap"><table class="cert-table">
+      <thead><tr><th>{% trans 'Serial number' %}</th><th>{% trans 'Student' %}</th><th>{% trans 'Course' %}</th><th>{% trans 'Grade' %}</th><th>{% trans 'Issued' %}</th><th>{% trans 'Actions' %}</th></tr></thead>
+      <tbody>
+      {% for item in certificates %}
+      <tr>
+        <td><span class="cert-serial">{{ item.serial_number }}</span></td>
+        <td><strong>{{ item.student_name }}</strong></td>
+        <td>{{ item.course_title }}</td>
+        <td><span class="cert-grade">{{ item.grade }} / 100</span></td>
+        <td>{{ item.issue_date|date:'Y-m-d' }}</td>
+        <td class="cert-table-actions">
+          <a href="{% url 'certificate_edit' item.pk %}" title="{% trans 'Edit and preview' %}"><i class="bi bi-pencil-square"></i> {% trans 'Edit' %}</a>
+          <a href="{% url 'certificate_delete' item.pk %}" title="{% trans 'Delete and preview' %}"><i class="text-danger"></i>{% trans 'Delete' %}</a>
+          <a href="{% url 'certificate_download' item.pk 'en' 'pdf' %}" title="{% trans 'Download English PDF' %}"><i class="bi bi-file-pdf"></i> {% trans 'EN PDF' %}</a>
+          <a href="{% url 'certificate_download' item.pk 'fa' 'pdf' %}" title="{% trans 'Download Persian PDF' %}"><i class="bi bi-file-pdf"></i> {% trans 'FA PDF' %}</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="6" class="cert-no-rows"><i class="bi bi-award"></i><strong>{% trans 'No certificates found' %}</strong><span>{% trans 'Choose “Issue new certificate” to create your first record.' %}</span></td></tr>
+      {% endfor %}
+      </tbody>
+    </table></div>
+    {% if total_count > 200 %}<p class="cert-notice">{% trans 'Showing the first 200 records. Narrow the list with search.' %}</p>{% endif %}
+  </section>
+</section>
+{% endblock %}

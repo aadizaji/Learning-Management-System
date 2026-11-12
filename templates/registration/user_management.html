@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% load static i18n %}
+{% block page_title %}{% trans 'User Management' %} | Sematec LMS{% endblock %}
+{% block page_heading %}{% trans 'User Management' %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/user-accounts.css' %}">{% endblock %}
+{% block content %}
+<div class="mg-toolbar"><div class="mg-heading"><div class="mg-heading-icon"><i class="bi bi-people"></i></div><div><h2>{% trans 'Team accounts' %}</h2></div></div><div class="mg-tools"><a class="mg-button mg-button--outline" href="{% url 'instructor_accounts' %}"><i class="bi bi-person-video3"></i> {% trans 'Add Instructor Login' %}</a><a class="mg-button" href="{% url 'create_account' %}"><i class="bi bi-person-plus"></i> {% trans 'Create account' %}</a></div></div>
+{% if messages %}{% for message in messages %}<div class="mg-alert" role="status">{{ message }}</div>{% endfor %}{% endif %}
+<div class="report-toolbar"><a href="{% url 'report_csv' 'users' %}" class="mg-button mg-button--outline"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+<div class="mg-panel"><div class="mg-table-wrap"><table class="mg-table account-directory"><thead><tr><th>{% trans 'Account' %}</th><th>{% trans 'Role' %}</th><th>{% trans 'Instructor profile' %}</th><th>{% trans 'Actions' %}</th></tr></thead><tbody>
+{% for account in users %}
+<tr><td><div class="account-user"><span class="account-user-avatar">{{ account.username|slice:':1'|upper }}</span><span><strong>{{ account.get_full_name|default:account.username }}</strong><small>@{{ account.username }} · {{ account.email }}</small></span></div></td>
+<td>{% if account.is_superuser %}<span class="mg-tag">{% trans 'Manager' %} · Superuser</span>{% else %}{% for g in account.groups.all %}<span class="mg-tag">{{ g.name }}</span>{% empty %}<span class="mg-status mg-status--bad">{% trans 'No role' %}</span>{% endfor %}{% endif %}</td>
+<td>{% if account.instructor_profile %}{{ account.instructor_profile }}{% else %}—{% endif %}</td>
+<td>{% if account.is_superuser or account.pk == user.pk %}<span class="account-help">{% trans 'Protected account' %}</span>{% else %}
+  <form method="post" action="{% url 'change_account_role' account.pk %}" class="account-role-form" data-linked="{% if account.instructor_profile %}true{% else %}false{% endif %}">{% csrf_token %}
+    <label class="visually-hidden" for="role-{{ account.pk }}">{% trans 'Role' %}</label>
+    <select id="role-{{ account.pk }}" name="role" required><option value="Manager" {% if not account.instructor_profile %}selected{% endif %}>{% trans 'Manager' %}</option><option value="Instructor" {% if account.instructor_profile %}selected{% endif %}>{% trans 'Instructor' %}</option></select>
+    <select name="instructor" class="account-instructor-choice" aria-label="{% trans 'Instructor profile' %}"><option value="">{% trans 'Link instructor when switching to Instructor' %}</option>{% for profile in unlinked_instructors %}<option value="{{ profile.pk }}">{{ profile }}</option>{% endfor %}</select>
+    <button type="submit" class="mg-button mg-button--sm mg-button--outline">{% trans 'Save' %}</button>
+  </form>
+{% endif %}</td></tr>{% empty %}<tr><td colspan="4">{% trans 'No accounts found' %}</td></tr>{% endfor %}
+</tbody></table></div></div>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'lms/js/user-accounts.js' %}" defer></script>{% endblock %}

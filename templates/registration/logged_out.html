@@ -1,0 +1,7 @@
+{% extends 'registration/_auth_base.html' %}
+{% load i18n %}
+{% block auth_title %}{% trans 'Signed out' %} | Sematec{% endblock %}
+{% block auth_content %}
+<div class="auth-success-icon"><i class="bi bi-check2-circle"></i></div><div class="auth-card-intro auth-centered"><div class="auth-heading-tag">{% trans 'SESSION ENDED' %}</div><h2>{% trans 'You have signed out' %}</h2><p>{% trans 'Your session has ended safely. You can sign in whenever you are ready.' %}</p></div>
+<a class="auth-submit auth-link-submit" href="{% url 'login' %}">{% trans 'Sign in again' %}<i class="bi bi-arrow-right"></i></a><a class="auth-secondary-link" href="{% url 'signup' %}">{% trans 'Create another account' %}</a>
+{% endblock %}

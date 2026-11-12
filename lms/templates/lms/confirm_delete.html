@@ -1,0 +1,44 @@
+{% extends '_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans page_title %} | Sematec LMS{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2>{% trans page_title %}</h2>
+</div>
+
+<div class="form-card confirm-card" style="max-width: 480px;">
+
+    <div class="d-flex align-items-center gap-3 mb-3">
+        <div class="stat-icon st-coral"><i class="bi bi-exclamation-triangle-fill"></i></div>
+        <p class="mb-0">
+            {% trans 'Are you sure you want to delete' %}
+            <strong>{{ object }}</strong>?
+            This action cannot be undone. {% if delete_note %}<br><span class="text-danger">{{ delete_note }}</span>{% endif %}
+        </p>
+    </div>
+
+    {% if delete_error %}
+        <div class="alert alert-danger" role="alert">{{ delete_error }}</div>
+    {% else %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-actions">
+            <button type="submit" class="btn-pill danger">
+                <i class="bi bi-trash3-fill"></i> {% trans 'Yes, Delete' %}
+            </button>
+
+            <a href="{% url cancel_url %}" class="btn-pill secondary">
+                {% trans 'Cancel' %}
+            </a>
+        </div>
+
+    </form>
+    {% endif %}
+
+</div>
+
+{% endblock %}

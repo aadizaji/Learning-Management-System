@@ -1,0 +1,39 @@
+/* Language, account and RTL additions to the existing LMS design system. */
+:root{--lms-font-fa:'Vazirmatn','Tahoma',sans-serif}
+html[lang="fa"],html[lang="fa"] body,html[lang="fa"] button,html[lang="fa"] input,html[lang="fa"] select,html[lang="fa"] textarea{font-family:var(--lms-font-fa)}
+html[lang="fa"] body{font-size:.94rem}
+.topbar-title p{display:none!important}
+.topbar-actions{display:flex;align-items:center;gap:12px;flex-wrap:nowrap}
+.language-switcher{display:flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--slate);min-width:0}
+.language-switcher select{appearance:none;cursor:pointer;border:0;background:transparent;outline:0;color:var(--ink);font-size:.79rem;font-weight:700;padding:3px 15px 3px 2px;max-width:86px}
+.language-switcher option{background:var(--surface);color:var(--ink)}
+.account-menu{position:relative;z-index:100}.account-menu>summary{list-style:none}.account-menu>summary::-webkit-details-marker{display:none}
+.account-trigger{display:flex;align-items:center;gap:10px;cursor:pointer;border:1px solid var(--border);border-radius:14px;padding:5px 10px 5px 6px;background:var(--surface);color:var(--ink);min-height:44px;transition:border-color .2s,transform .2s}
+.account-trigger:hover,.account-menu[open] .account-trigger{border-color:var(--indigo)}
+.account-avatar{display:grid;place-items:center;width:33px;height:33px;border-radius:10px;background:linear-gradient(135deg,#4f60ef,#13b7b1);color:white;font-size:.9rem;font-weight:800;flex-shrink:0}
+.account-identity{display:flex;flex-direction:column;gap:2px;min-width:0;max-width:130px;line-height:1.25}.account-identity strong{font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.account-identity small{color:var(--slate);font-size:.68rem}.account-trigger>.bi{font-size:.68rem;color:var(--slate)}
+.account-dropdown{position:absolute;inset-inline-end:0;top:calc(100% + 10px);width:240px;box-shadow:0 20px 60px #10193635;border:1px solid var(--border);background:var(--surface);border-radius:17px;padding:10px;animation:lms-menu-in .2s ease both;z-index:110}
+.account-menu-caption{font-size:.72rem;color:var(--slate);padding:10px 10px 12px;display:flex;flex-direction:column;gap:3px;overflow-wrap:anywhere}.account-menu-caption strong{color:var(--ink);font-size:.86rem}
+.account-dropdown form{margin:0}.account-action{border:0;background:transparent;width:100%;display:flex;align-items:center;gap:11px;padding:11px 10px;color:var(--ink);font-size:.82rem;text-align:start;text-decoration:none;border-radius:10px;font-weight:600}.account-action:hover{background:var(--indigo-soft);color:var(--indigo)}.account-action--danger{color:var(--coral)}.account-separator{height:1px;background:var(--border);margin:5px 0}.account-login{font-size:.83rem;font-weight:700;color:var(--indigo);text-decoration:none}
+@keyframes lms-menu-in{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:translateY(0)}}
+/* The existing layout was LTR-only, so mirror only the structural offsets. */
+html[dir=rtl] .sidebar{left:auto;right:0}
+html[dir=rtl] .main-area{margin-left:0;margin-right:var(--sidebar-w)}
+html[dir=rtl] .topbar-title,html[dir=rtl] .content{text-align:right}
+html[dir=rtl] .nav-item{direction:rtl;text-align:right}
+html[dir=rtl] .mg-person-card .mg-avatar{left:auto;right:20px}
+html[dir=rtl] .mg-profile-actions{margin-left:0;margin-right:auto}
+html[dir=rtl] .mg-table th{text-align:right}
+html[dir=rtl] .auth-password-toggle{left:8px;right:auto}
+html[dir=rtl] .mg-person-meta,html[dir=rtl] .mg-card-actions{direction:rtl}
+html[dir=rtl] .btn-pill .bi-arrow-right,html[dir=rtl] .bi-arrow-left,html[dir=rtl] .bi-arrow-right{transform:scaleX(-1)}
+html[dir=rtl] .mg-person-content{text-align:right}
+@media(max-width:991px){html[dir=rtl] .main-area{margin-right:0}html[dir=rtl] .sidebar{right:0;left:auto;transform:translateX(100%)}html[dir=rtl] .sidebar.open{right:0;left:auto;transform:translateX(0)}}
+@media(max-width:650px){.account-identity{display:none}.account-trigger{padding:5px}.account-trigger>.bi{display:none}.topbar-actions{gap:6px}.language-switcher{padding:4px 6px}.language-switcher select{max-width:65px}.account-dropdown{inset-inline-end:0}.topbar{gap:8px}}
+@media(prefers-reduced-motion:reduce){.account-dropdown{animation:none}}
+
+html[dir=rtl] .topbar{flex-direction:row-reverse}
+html[dir=rtl] .topbar-actions{flex-direction:row-reverse}
+
+.sidebar-brand{text-decoration:none;color:inherit}
+@media(max-width:560px){html[dir=rtl] .topbar{flex-direction:column}html[dir=rtl] .topbar-actions{width:100%;justify-content:flex-end}}

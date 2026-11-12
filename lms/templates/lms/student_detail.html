@@ -1,0 +1,26 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% block page_title %}{{ student }} | Sematec LMS{% endblock %}
+{% block page_heading %}{% trans 'Student Profile' %}{% endblock %}
+
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'students' %}?student={{ student.pk }}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<a class="mg-back" href="{% url 'student_list' %}"><i class="bi bi-arrow-left"></i> {% trans 'All students' %}</a>
+<article class="mg-profile"><div class="mg-profile-banner"></div><div class="mg-profile-body">
+<div class="mg-profile-lead">{% if student.profile_img %}<img class="mg-avatar mg-avatar--large" src="{{ student.profile_img.url }}" alt="{{ student }}" />{% else %}<div class="mg-avatar mg-avatar--large">{{ student.first_name|slice:':1' }}{{ student.last_name|slice:':1' }}</div>{% endif %}<div class="mg-profile-lead-text"><h2>{{ student }}</h2><div class="mg-muted">Student #{{ student.pk }} · {{ student.city }}</div></div><div class="mg-profile-actions">{% if can_manage %}<a class="mg-button mg-button--outline" href="{% url 'edit_student' student.pk %}"><i class="bi bi-pencil"></i> {% trans 'Edit' %}</a>{% endif %}{% if can_manage %}<a class="mg-button mg-button--outline" href="{% url 'delete_student' student.pk %}"><i class="bi bi-trash"></i> {% trans 'Delete' %}</a>{% endif %}</div></div>
+<h3 class="mg-section-title">{% trans 'Personal information' %}</h3><dl class="mg-detail-grid">
+<div class="mg-detail"><dt>{% trans 'First name' %}</dt><dd>{{ student.first_name }}</dd></div><div class="mg-detail"><dt>{% trans 'Last name' %}</dt><dd>{{ student.last_name }}</dd></div><div class="mg-detail"><dt>{% trans "Father's name" %}</dt><dd>{{ student.father_name }}</dd></div>
+<div class="mg-detail"><dt>{% trans 'National code' %}</dt><dd>{{ student.national_code }}</dd></div><div class="mg-detail"><dt>{% trans 'Date of birth' %}</dt><dd>{{ student.birth_date|date:"Y-m-d" }}</dd></div><div class="mg-detail"><dt>{% trans 'Gender' %}</dt><dd>{{ student.get_gender_display }}</dd></div>
+<div class="mg-detail"><dt>{% trans 'Educational Certification' %}</dt><dd>{{ student.get_educational_certification_display|default:'—' }}</dd></div>
+<div class="mg-detail"><dt>{% trans 'Workplace' %}</dt><dd>{{ student.work_place|default:'—' }}</dd></div>
+<div class="mg-detail"><dt>{% trans 'Job title' %}</dt><dd>{{ student.job_title|default:'—'|linebreaksbr }}</dd></div>
+<div class="mg-detail"><dt>{% trans 'Organizational position' %}</dt><dd>{{ student.get_organizational_position_display|default:'—' }}</dd></div>
+<div class="mg-detail"><dt>{% trans 'City' %}</dt><dd>{{ student.city }}</dd></div>
+<div class="mg-detail"><dt>{% trans 'Email' %}</dt><dd>{{ student.email }}</dd></div><div class="mg-detail"><dt>{% trans 'Phone' %}</dt><dd>{{ student.phone_number }}</dd></div><div class="mg-detail"><dt>{% trans 'Address' %}</dt><dd>{{ student.address|linebreaksbr }}</dd></div>
+</dl></div></article>
+<section class="mg-panel"><h3 class="mg-section-title" style="margin-top:0">{% trans 'Course registers' %}</h3><div class="mg-table-wrap"><table class="mg-table"><thead><tr><th>{% trans 'Course' %}</th><th>{% trans 'Instructor' %}</th><th>{% trans 'Date' %}</th><th>{% trans 'Status' %}</th></tr></thead><tbody>{% for e in registers %}<tr><td><a href="{% url 'course_detail' e.course.pk %}">{{ e.course.title }}</a></td><td>{{ e.instructor }}</td><td>{{ e.register_date|date:"Y-m-d" }}</td><td><span class="mg-status {% if e.status == 'A' %}mg-status--good{% endif %}">{{ e.get_status_display }}</span></td></tr>{% empty %}<tr><td colspan="4" class="mg-muted">{% trans 'This student is not registered in a course yet.' %}</td></tr>{% endfor %}</tbody></table></div></section>
+<section class="mg-panel"><h3 class="mg-section-title">{% trans 'Course evaluations' %}</h3>
+{% for response in survey_responses %}<div class="mg-inline-list"><span><a href="{% url 'survey_course' response.course_id %}">{{ response.course.title }}</a> · {{ response.updated_at|date:'Y-m-d' }} · {% trans 'Average rating' %}: {{ response.average_rating|default:'—' }} / 5</span></div>
+{% empty %}<p class="mg-muted">{% trans 'No evaluations saved yet.' %}</p>{% endfor %}</section>
+{% endblock %}

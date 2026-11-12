@@ -1,0 +1,17 @@
+.schedule-editor {border:1px solid var(--border);border-radius:16px;background:var(--surface-2);padding:20px;}
+.schedule-editor-header {display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:18px;}
+.schedule-editor-header h3 {font-size:1rem;font-weight:800;display:flex;align-items:center;gap:9px;}
+.schedule-editor-header h3 i {color:var(--indigo);}
+.schedule-editor-header p {font-size:.8rem;color:var(--slate);max-width:600px;margin:6px 0 0;line-height:1.6;}
+.schedule-slots {display:grid;gap:11px;}
+.schedule-slot {border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:15px;}
+.schedule-slot.is-deleted {opacity:.5;background:var(--surface-2);}
+.schedule-slot-fields {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;}
+.schedule-slot-fields > div {min-width:0;}
+.schedule-slot-footer {margin-top:10px;display:flex;justify-content:flex-end;}
+.form-card .schedule-delete {display:flex;align-items:center;gap:8px;font-size:.76rem;color:var(--coral);margin:0;cursor:pointer;}
+.form-card .schedule-delete input {accent-color:var(--coral);}
+.form-card .schedule-slot input[type="time"] {width:100%;padding:11px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--ink);min-height:44px;color-scheme:light;}
+[data-theme="dark"] .form-card .schedule-slot input[type="time"] {color-scheme:dark;}
+@media(max-width:850px) {.schedule-slot-fields {grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:520px) {.schedule-slot-fields {grid-template-columns:1fr;}.schedule-editor {padding:14px;}.schedule-editor-header .btn-pill {width:100%;justify-content:center;}}

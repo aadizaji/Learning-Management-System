@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% block page_title %}{% trans 'Registers | Sematec LMS' %}{% endblock %}
+{% block page_heading %}{% trans 'Registers' %}{% endblock %}
+
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'registers' %}{% if request.GET.urlencode %}?{{ request.GET.urlencode }}{% endif %}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<div class="mg-toolbar"><div class="mg-heading"><div class="mg-heading-icon"><i class="bi bi-person-check-fill"></i></div><div><h2>{% trans 'Register Directory' %}</h2><div class="mg-muted">{% trans 'View registrations and their current status' %}</div></div></div>{% if can_manage %}<a class="mg-button" href="{% url 'add_register' %}"><i class="bi bi-plus-lg"></i> {% trans 'Register Student' %}</a>{% endif %}</div>
+<form method="get" class="mg-filter" role="search"><input name="q" type="search" value="{{ q }}" placeholder="{% trans 'Search student or course...' %}" aria-label="{% trans 'Search registers' %}"><button class="mg-button" type="submit">{% trans 'Search' %}</button></form>
+<div class="mg-panel"><div class="mg-table-wrap"><table class="mg-table"><thead><tr><th>{% trans 'Student' %}</th><th>{% trans 'Course' %}</th><th>{% trans 'Instructor' %}</th><th>{% trans 'Registered' %}</th><th>{% trans 'Status' %}</th><th>{% trans 'Actions' %}</th></tr></thead><tbody>{% for e in registers %}<tr><td><a href="{% url 'student_detail' e.student.pk %}">{{ e.student }}</a></td><td><a href="{% url 'course_detail' e.course.pk %}">{{ e.course.title }}</a></td><td>{{ e.instructor }}</td><td>{{ e.register_date|date:"Y-m-d" }}</td><td><span class="mg-status {% if e.status == 'A' %}mg-status--good{% endif %}">{{ e.get_status_display }}</span></td><td><div class="mg-tools">{% if can_manage %}<a href="{% url 'edit_register' e.pk %}" class="mg-button mg-button--sm mg-button--outline">{% trans 'Edit' %}</a>{% endif %}{% if can_manage %}<a href="{% url 'delete_register' e.pk %}" class="mg-button mg-button--sm mg-button--outline">{% trans 'Delete' %}</a>{% endif %}</div></td></tr>{% empty %}<tr><td colspan="6">{% trans 'No registers yet.' %}</td></tr>{% endfor %}</tbody></table></div></div>
+{% with page_obj=registers %}{% include 'lms/_pagination.html' %}{% endwith %}
+{% endblock %}

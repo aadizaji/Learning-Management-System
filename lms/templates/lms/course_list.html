@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% block page_title %}{% trans 'Courses | Sematec LMS' %}{% endblock %}
+{% block page_heading %}{% trans 'Courses' %}{% endblock %}
+
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'courses' %}{% if request.GET.urlencode %}?{{ request.GET.urlencode }}{% endif %}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<div class="mg-toolbar"><div class="mg-heading"><div class="mg-heading-icon"><i class="bi bi-journal-bookmark-fill"></i></div><div><h2>{% trans 'Course Catalogue' %}</h2><div class="mg-muted">{{ total_count }} courses · live active-register capacity</div></div></div>{% if can_manage %}<a class="mg-button" href="{% url 'add_course' %}"><i class="bi bi-plus-lg"></i> {% trans 'Add Course' %}</a>{% endif %}</div>
+<form class="mg-filter" method="get" role="search"><input type="search" name="q" value="{{ q }}" placeholder="{% trans 'Search courses or categories...' %}" aria-label="{% trans 'Search courses' %}"><select name="category" aria-label="{% trans 'Filter by category' %}"><option value="">{% trans 'All categories' %}</option>{% for category in categories %}<option value="{{ category.pk }}" {% if category_id == category.pk|stringformat:'s' %}selected{% endif %}>{{ category.name }}</option>{% endfor %}</select><button class="mg-button" type="submit">{% trans 'Filter' %}</button>{% if q or category_id %}<a class="mg-button mg-button--outline" href="{% url 'course_list' %}">{% trans 'Clear' %}</a>{% endif %}</form>
+<div class="mg-grid">{% for course in courses %}{% include 'lms/_course_card.html' %}{% empty %}<div class="mg-empty"><i class="bi bi-journals"></i><h3>{% trans 'No matching courses' %}</h3>{% if can_manage %}<a class="mg-button" href="{% url 'add_course' %}">{% trans 'Add Course' %}</a>{% endif %}</div>{% endfor %}</div>
+{% with page_obj=courses %}{% include 'lms/_pagination.html' %}{% endwith %}
+{% endblock %}

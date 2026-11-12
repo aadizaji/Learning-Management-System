@@ -1,0 +1,13 @@
+{% extends '_base.html' %}{% load i18n static %}
+{% block page_title %}{% trans 'Survey evaluation' %} | Sematec LMS{% endblock %}
+{% block page_heading %}{% trans 'Survey evaluation' %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/surveys.css' %}">{% endblock %}
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'surveys' %}?course={{ course.pk }}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<a class="mg-back" href="{% url 'survey_course' course.pk %}"><i class="bi bi-arrow-left"></i> {{ course.title }}</a>
+<h2>{% trans 'Evaluation summary' %} · {{ course.title }}</h2>
+<div class="mg-summary-row">{% for item in summary %}<div class="mg-summary-tile"><strong>{{ item.average|floatformat:1 }} / 5</strong><span>{% if item.response__audience == 'I' %}{% trans 'Instructor feedback' %}{% else %}{% trans 'Student feedback' %}{% endif %} · {{ item.count }} {% trans 'ratings' %}</span></div>{% empty %}<div class="mg-panel">{% trans 'No responses yet.' %}</div>{% endfor %}</div>
+<div class="mg-panel"><h3>{% trans 'Question-by-question evaluation' %}</h3><div class="mg-table-wrap"><table class="mg-table"><thead><tr><th>{% trans 'Audience' %}</th><th>{% trans 'Question' %}</th><th>{% trans 'Average rating' %}</th><th>{% trans 'Ratings' %}</th></tr></thead><tbody>{% for q in question_rows %}<tr><td>{{ q.get_audience_display }}</td><td>{{ q.title }}</td><td>{{ q.average_rating|floatformat:1 }} / 5</td><td>{{ q.count }}</td></tr>{% empty %}<tr><td colspan="4">{% trans 'No answered questions yet.' %}</td></tr>{% endfor %}</tbody></table></div></div>
+<div class="mg-panel"><h3>{% trans 'Individual evaluations' %}</h3><div class="mg-table-wrap"><table class="mg-table"><thead><tr><th>{% trans 'Name' %}</th><th>{% trans 'Role' %}</th><th>{% trans 'Average' %}</th><th>{% trans 'Recorded' %}</th></tr></thead><tbody>{% for r in responses %}<tr><td>{% if r.instructor %}{{ r.instructor }}{% else %}{{ r.register.student }}{% endif %}</td><td>{{ r.get_audience_display }}</td><td>{{ r.average_rating|floatformat:1 }} / 5</td><td>{{ r.updated_at|date:'Y-m-d' }}</td></tr>{% empty %}<tr><td colspan="4">{% trans 'No responses yet.' %}</td></tr>{% endfor %}</tbody></table></div></div>
+{% endblock %}

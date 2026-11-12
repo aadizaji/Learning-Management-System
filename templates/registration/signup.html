@@ -1,0 +1,28 @@
+{% extends 'registration/_auth_base.html' %}
+{% load i18n %}
+{% block auth_title %}{% trans 'Create account' %} | Sematec{% endblock %}
+{% block auth_content %}
+{% if bootstrap_closed %}
+<div class="auth-card-intro"><div class="auth-heading-tag"><i class="bi bi-shield-lock"></i> {% trans 'Accounts' %}</div><h2>{% trans 'Setup completed' %}</h2><p>{% trans 'For security, new accounts are created by a Manager from User Management. Sign in with your existing account.' %}</p></div>
+<a class="auth-submit" href="{% url 'login' %}">{% trans 'Sign in' %} <i class="bi bi-arrow-right"></i></a>
+{% else %}
+<div class="auth-card-intro"><div class="auth-heading-tag"><i class="bi bi-person-plus"></i> {% trans 'JOIN THE ACADEMY' %}</div><h2>{% trans 'Create your account' %}</h2><p>{% trans 'Set up your space in a few simple steps.' %}</p></div>
+{% if form.non_field_errors %}<div class="auth-error" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+<form method="post" class="auth-form" novalidate>{% csrf_token %}<input type="hidden" name="next" value="{{ next }}">
+  <div class="auth-fields-two">
+  {% for field in form %}
+    <div class="auth-field {% if field.name == 'username' or field.name == 'email' or field.name == 'password1' or field.name == 'password2' %}auth-field-wide{% endif %}">
+      <label for="{{ field.id_for_label }}">{% trans field.label %}{% if field.field.required %}<span class="auth-required"> *</span>{% endif %}</label>
+      <div class="auth-input-wrap"><i class="bi {% if field.name == 'email' %}bi-envelope{% elif 'password' in field.name %}bi-lock{% else %}bi-person{% endif %}"></i>
+        {{ field }}
+        {% if field.name == 'password1' or field.name == 'password2' %}<button type="button" class="auth-password-toggle" aria-label="{% trans 'Show password' %}" data-toggle-password="{{ field.id_for_label }}"><i class="bi bi-eye"></i></button>{% endif %}
+      </div>
+      {% for error in field.errors %}<small class="auth-field-error">{{ error }}</small>{% endfor %}
+    </div>
+  {% endfor %}
+  </div>
+  <button class="auth-submit" type="submit">{% trans 'Create account' %}<i class="bi bi-arrow-right"></i></button>
+</form>
+<div class="auth-divide"><span>{% trans 'Already have an account?' %}</span></div><a class="auth-secondary-link" href="{% url 'login' %}">{% trans 'Sign in' %}<i class="bi bi-arrow-up-right"></i></a>
+{% endif %}
+{% endblock %}

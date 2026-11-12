@@ -1,0 +1,14 @@
+{% extends 'registration/_auth_base.html' %}
+{% load i18n %}
+{% block auth_title %}{% trans 'Sign in' %} | Sematec{% endblock %}
+{% block auth_content %}
+<div class="auth-card-intro"><div class="auth-heading-tag"><i class="bi bi-shield-lock"></i> {% trans 'WELCOME BACK' %}</div><h2>{% trans 'Sign in to your account' %}</h2><p>{% trans 'Enter your credentials to continue.' %}</p></div>
+{% if form.non_field_errors %}<div class="auth-error" role="alert">{% for error in form.non_field_errors %}{{ error }}{% endfor %}</div>{% endif %}
+{% if next and user.is_authenticated %}<div class="auth-error">{% trans 'Your account does not have permission to view this page.' %}</div>{% endif %}
+<form method="post" class="auth-form" novalidate>{% csrf_token %}<input type="hidden" name="next" value="{{ next }}">
+  <div class="auth-field"><label for="id_username">{% trans 'Username' %}</label><div class="auth-input-wrap"><i class="bi bi-person"></i><input type="text" name="username" id="id_username" autocomplete="username" placeholder="{% trans 'Your username' %}" value="{{ form.username.value|default_if_none:'' }}" required autofocus></div>{% for error in form.username.errors %}<small class="auth-field-error">{{ error }}</small>{% endfor %}</div>
+  <div class="auth-field"><label for="id_password">{% trans 'Password' %}</label><div class="auth-input-wrap"><i class="bi bi-lock"></i><input type="password" name="password" id="id_password" autocomplete="current-password" placeholder="{% trans 'Enter your password' %}" required><button type="button" class="auth-password-toggle" aria-label="{% trans 'Show password' %}" data-toggle-password="id_password"><i class="bi bi-eye"></i></button></div></div>
+  <button class="auth-submit" type="submit">{% trans 'Sign in' %}<i class="bi bi-arrow-right"></i></button>
+</form>
+<div class="auth-divide"><span>{% trans 'New to Sematec?' %}</span></div><a class="auth-secondary-link" href="{% url 'signup' %}">{% trans 'Create a new account' %}<i class="bi bi-arrow-up-right"></i></a>
+{% endblock %}

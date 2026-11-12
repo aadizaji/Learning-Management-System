@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/date-fields.css' %}">{% endblock %}
+{% block page_title %}{% trans page_title %} | Sematec LMS{% endblock %}
+{% block page_heading %}{% trans page_title %}{% endblock %}
+
+{% block content %}
+<a class="mg-back" href="{% url 'exam_list' %}"><i class="bi bi-arrow-left"></i> {% trans 'All exams' %}</a>
+<div class="mg-panel mg-form"><div class="mg-toolbar"><div><h2>{% trans page_title %}</h2><p class="mg-muted">{% trans 'Online means held elsewhere; this LMS only manages exam information and marks.' %}</p></div></div>
+<form method="post" novalidate>{% csrf_token %}{% if form.non_field_errors %}<div class="mg-alert mg-alert--error">{{ form.non_field_errors }}</div>{% endif %}
+<div class="mg-form-grid">{% for field in form %}<div class="mg-field {% if field.name == 'description' %}col-12{% endif %}" {% if field.name == 'description' %}style="grid-column:1/-1"{% endif %}><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.name == 'exam_date' %}<div class="mg-muted" style="margin-top:7px">{% trans 'Choose a date from the calendar · YYYY-MM-DD' %}</div>{% endif %}{% if field.errors %}<div class="mg-field-error">{{ field.errors }}</div>{% endif %}</div>{% endfor %}</div>
+<div class="mg-tools" style="margin-top:24px"><button type="submit" class="mg-button"><i class="bi bi-check2"></i> {% trans 'Save Exam' %}</button><a href="{% url 'exam_list' %}" class="mg-button mg-button--outline">{% trans 'Cancel' %}</a></div></form></div>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'lms/js/date-fields.js' %}"></script>{% endblock %}

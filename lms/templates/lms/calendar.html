@@ -1,0 +1,139 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block page_title %}{% trans 'Academic Calendar | Sematec LMS' %}{% endblock %}
+{% block page_heading %}{% trans 'Academic Calendar' %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'lms/css/calendar.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'sessions' %}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<section class="academic-calendar" aria-label="{% trans 'Academic calendar' %}">
+    <div class="calendar-intro">
+        <div>
+            <div class="calendar-eyebrow"><i class="bi bi-stars"></i> {% trans 'ACADEMIC PLANNING' %}</div>
+            
+            
+        </div>
+        <div class="calendar-header-actions">
+            {% if can_manage %}<a href="{% url 'add_course' %}" class="calendar-button calendar-button-muted"><i class="bi bi-plus-lg"></i> {% trans 'New course' %}</a>{% endif %}
+            <a href="{% url 'home' %}" class="calendar-button calendar-button-primary"><i class="bi bi-pencil-square"></i> {% trans 'Edit course schedules' %}</a>
+        </div>
+    </div>
+
+    {% if unscheduled_courses %}
+    <div class="calendar-unscheduled" role="status">
+        <div><strong><i class="bi bi-exclamation-circle"></i> {% trans 'Courses without weekly schedules' %}</strong>
+        <p>{% trans 'These courses have been saved, but need at least one class day and time before they can appear on the calendar.' %}</p></div>
+        <div class="calendar-unscheduled-links">
+            {% for course in unscheduled_courses %}
+                {% if can_manage %}<a href="{% url 'edit_course' course.pk %}">{{ course.title }} <i class="bi bi-arrow-up-right"></i></a>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="calendar-stats" aria-label="{% trans 'Calendar summary' %}">
+        <div class="calendar-stat">
+            <span class="calendar-stat-icon tone-indigo"><i class="bi bi-journal-bookmark-fill"></i></span>
+            <div><span class="calendar-stat-value" id="stat-courses">{{ courses_count }}</span><span class="calendar-stat-label">{% trans 'Courses with sessions' %}</span></div>
+        </div>
+        <div class="calendar-stat">
+            <span class="calendar-stat-icon tone-teal"><i class="bi bi-repeat"></i></span>
+            <div><span class="calendar-stat-value" id="stat-schedules">{{ schedules_count }}</span><span class="calendar-stat-label">{% trans 'Weekly class slots' %}</span></div>
+        </div>
+        <div class="calendar-stat">
+            <span class="calendar-stat-icon tone-sky"><i class="bi bi-calendar2-week"></i></span>
+            <div><span class="calendar-stat-value" id="stat-sessions">—</span><span class="calendar-stat-label">{% trans 'Sessions this month' %}</span></div>
+        </div>
+        <div class="calendar-stat">
+            <span class="calendar-stat-icon tone-amber"><i class="bi bi-person-video3"></i></span>
+            <div><span class="calendar-stat-value" id="stat-instructors">{{ instructors_count }}</span><span class="calendar-stat-label">{% trans 'Scheduled instructors' %}</span></div>
+        </div>
+    </div>
+
+    <div class="calendar-filters" aria-label="{% trans 'Filter calendar' %}">
+        <label class="calendar-search">
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <span class="visually-hidden">{% trans 'Search courses' %}</span>
+            <input id="calendar-search" type="search" placeholder="{% trans 'Search courses or instructors...' %}" autocomplete="off">
+        </label>
+        <label class="calendar-filter-select">
+            <span class="visually-hidden">{% trans 'Filter by course category' %}</span>
+            <select id="calendar-category"><option value="">{% trans 'All categories' %}</option>
+                {% for category in categories %}<option value="{{ category.id }}">{{ category.name }}</option>{% endfor %}
+            </select>
+        </label>
+        <label class="calendar-filter-select">
+            <span class="visually-hidden">{% trans 'Filter by instructor' %}</span>
+            <select id="calendar-instructor"><option value="">{% trans 'All instructors' %}</option>
+                {% for instructor in instructors %}<option value="{{ instructor.id }}">{{ instructor }}</option>{% endfor %}
+            </select>
+        </label>
+        <button class="calendar-clear" id="calendar-clear" type="button"><i class="bi bi-arrow-counterclockwise"></i> {% trans 'Reset' %}</button>
+    </div>
+
+    <div class="calendar-layout">
+        <div class="calendar-main card-surface">
+            <div class="calendar-toolbar">
+                <div class="calendar-toolbar-title">
+                    <span class="calendar-toolbar-kicker">{% trans 'MONTHLY OVERVIEW' %}</span>
+                    <h3 id="calendar-month-title" aria-live="polite">{% trans 'Loading calendar...' %}</h3>
+                    <span class="calendar-date-system"><i class="bi bi-calendar3"></i> {% trans 'English · Gregorian calendar' %}</span>
+                </div>
+                <div class="calendar-toolbar-actions">
+                    <button class="calendar-today" type="button" id="calendar-today">{% trans 'Today' %}</button>
+                    <div class="calendar-nav" aria-label="{% trans 'Change month' %}">
+                        <button type="button" id="calendar-previous" aria-label="{% trans 'Previous month' %}"><i class="bi bi-chevron-left"></i></button>
+                        <button type="button" id="calendar-next" aria-label="{% trans 'Next month' %}"><i class="bi bi-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="calendar-weekdays" aria-hidden="true">
+                <span>{% trans 'Monday' %}</span><span>{% trans 'Tuesday' %}</span><span>{% trans 'Wednesday' %}</span><span>{% trans 'Thursday' %}</span><span>{% trans 'Friday' %}</span><span>{% trans 'Saturday' %}</span><span>{% trans 'Sunday' %}</span>
+            </div>
+            <div class="calendar-grid" id="calendar-grid" role="grid" aria-label="{% trans 'Monthly schedule' %}" data-attendance-url="{{ attendance_base_url }}" data-can-mark="{% if request.user.is_authenticated %}true{% else %}false{% endif %}"></div>
+            <div class="calendar-footnote">
+                <span><span class="legend-dot tone-dot-indigo"></span> {% trans 'Scheduled' %}</span>
+                <span><span class="legend-dot" style="background:#159b82"></span> {% trans 'Completed' %}</span>
+                <span><span class="legend-dot" style="background:#d94b61"></span> {% trans 'Cancelled' %}</span>
+                <span><i class="bi bi-info-circle"></i> {% trans 'Events are saved class sessions. Changes in Django Admin appear here.' %}</span>
+            </div>
+        </div>
+
+        <aside class="calendar-side">
+            <section class="card-surface calendar-day-panel" aria-labelledby="selected-day-heading">
+                <div class="calendar-side-header">
+                    <div>
+                        <span class="calendar-toolbar-kicker">{% trans 'SELECTED DAY' %}</span>
+                        <h3 id="selected-day-heading">{% trans 'Day details' %}</h3>
+                    </div>
+                    <div class="calendar-side-icon"><i class="bi bi-calendar-event"></i></div>
+                </div>
+                <p class="calendar-day-date" id="selected-day-date">—</p>
+                <div class="calendar-day-events" id="selected-day-events" aria-live="polite"></div>
+            </section>
+
+            <section class="card-surface calendar-upcoming-panel" aria-labelledby="upcoming-heading">
+                <div class="calendar-side-header">
+                    <div>
+                        <span class="calendar-toolbar-kicker">{% trans 'LOOKING AHEAD' %}</span>
+                        <h3 id="upcoming-heading">{% trans 'Upcoming classes' %}</h3>
+                    </div>
+                    <i class="bi bi-arrow-up-right calendar-upcoming-symbol"></i>
+                </div>
+                <div id="calendar-upcoming" class="calendar-upcoming-list"></div>
+            </section>
+        </aside>
+    </div>
+</section>
+{{ calendar_data|json_script:"academic-calendar-data" }}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'lms/js/calendar.js' %}" defer></script>
+{% endblock %}

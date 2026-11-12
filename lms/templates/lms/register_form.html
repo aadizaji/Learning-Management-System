@@ -1,0 +1,254 @@
+{% extends '_base.html' %}
+{% load i18n static %}
+
+{% block page_title %}{% trans page_title %} | Sematec LMS{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2>{% trans page_title %}</h2>
+    <p>{% trans 'Select a student, course, and instructor.' %}</p>
+</div>
+
+<div class="form-card">
+
+    {% if form.non_field_errors %}
+        <div class="alert-soft">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="row g-4">
+
+            <!-- Student -->
+            <div class="col-md-6">
+
+                <label for="{{ form.student.id_for_label }}" class="form-label">
+                    {% trans 'Student' %}
+                </label>
+
+                {{ form.student }}
+
+                {% if form.student.errors %}
+                    <div class="field-error">
+                        {{ form.student.errors }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+
+            <!-- Course -->
+            <div class="col-md-6">
+
+                <label for="{{ form.course.id_for_label }}" class="form-label">
+                    {% trans 'Course' %}
+                </label>
+
+                {{ form.course }}
+
+                {% if form.course.errors %}
+                    <div class="field-error">
+                        {{ form.course.errors }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+
+            <!-- Instructor -->
+            <div class="col-md-6">
+
+                <label for="{{ form.instructor.id_for_label }}" class="form-label">
+                    {% trans 'Instructor' %}
+                </label>
+
+                <select
+                    name="instructor"
+                    id="{{ form.instructor.id_for_label }}"
+                    {% if not form.course.value %}disabled{% endif %}
+                >
+                    <option value="">
+                        {% trans 'Select a course first' %}
+                    </option>
+                </select>
+
+                <div class="field-hint">{% trans 'Only instructors teaching the selected course are shown.' %}</div>
+
+                {% if form.instructor.errors %}
+                    <div class="field-error">
+                        {{ form.instructor.errors }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+
+            <!-- Status -->
+            <div class="col-md-6">
+
+                <label for="{{ form.status.id_for_label }}" class="form-label">
+                    {% trans 'Status' %}
+                </label>
+
+                {{ form.status }}
+
+                {% if form.status.errors %}
+                    <div class="field-error">
+                        {{ form.status.errors }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+
+            <div class="col-md-6"><label for="{{ form.completed_on.id_for_label }}" class="form-label">{% trans 'Actual completion date (optional)' %}</label>{{ form.completed_on }}{{ form.completed_on.errors }}</div>
+            <!-- Buttons -->
+            <div class="col-12 form-actions">
+
+                <button type="submit" class="btn-pill">
+                    <i class="bi bi-check2"></i> {% trans 'Register Student' %}
+                </button>
+
+                <a href="{% url 'register_list' %}" class="btn-pill secondary">
+                    {% trans 'Cancel' %}
+                </a>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<script>
+
+    const courseSelect = document.getElementById(
+        "{{ form.course.id_for_label }}"
+    );
+
+    const instructorSelect = document.getElementById(
+        "{{ form.instructor.id_for_label }}"
+    );
+
+    // Pre-selected instructor id, used on the Edit page (or when the
+    // Add page is re-rendered after a validation error) so the correct
+    // instructor stays selected once the dropdown is repopulated.
+    const initialInstructorId = "{{ form.instructor.value|default_if_none:'' }}";
+
+
+    function loadInstructors(courseId, selectedInstructorId) {
+
+        instructorSelect.innerHTML = "";
+
+        if (!courseId) {
+
+            instructorSelect.disabled = true;
+
+            const option = document.createElement("option");
+            option.value = "";
+            option.textContent = "Select a course first";
+
+            instructorSelect.appendChild(option);
+
+            return;
+        }
+
+
+        // Loading state
+        instructorSelect.disabled = true;
+
+        const loadingOption = document.createElement("option");
+        loadingOption.value = "";
+        loadingOption.textContent = "Loading instructors...";
+
+        instructorSelect.appendChild(loadingOption);
+
+
+        fetch(`/courses/${courseId}/instructors/`)
+            .then(response => response.json())
+            .then(data => {
+
+                instructorSelect.innerHTML = "";
+
+
+                if (data.length === 0) {
+
+                    const option = document.createElement("option");
+                    option.value = "";
+                    option.textContent = "No instructors available";
+
+                    instructorSelect.appendChild(option);
+
+                    instructorSelect.disabled = true;
+
+                    return;
+                }
+
+
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "Select an instructor";
+
+                instructorSelect.appendChild(defaultOption);
+
+
+                data.forEach(instructor => {
+
+                    const option = document.createElement("option");
+
+                    option.value = instructor.id;
+                    option.textContent = instructor.name;
+
+                    if (String(instructor.id) === String(selectedInstructorId)) {
+                        option.selected = true;
+                    }
+
+                    instructorSelect.appendChild(option);
+
+                });
+
+
+                instructorSelect.disabled = false;
+
+            })
+            .catch(error => {
+
+                console.error("Error:", error);
+
+                instructorSelect.innerHTML = "";
+
+                const option = document.createElement("option");
+                option.value = "";
+                option.textContent = "Error loading instructors";
+
+                instructorSelect.appendChild(option);
+
+                instructorSelect.disabled = true;
+
+            });
+
+    }
+
+
+    courseSelect.addEventListener("change", function () {
+        loadInstructors(this.value, null);
+    });
+
+
+    // On page load: if a course is already selected (Edit page, or a
+    // validation error re-rendered the Add page), populate the
+    // instructor dropdown right away instead of waiting for a "change".
+    if (courseSelect.value) {
+        loadInstructors(courseSelect.value, initialInstructorId);
+    }
+
+</script>
+
+{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/date-fields.css' %}">{% endblock %}
+{% block extra_js %}<script defer src="{% static 'lms/js/date-fields.js' %}"></script>{% endblock %}

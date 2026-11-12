@@ -1,0 +1,10 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% block page_title %}{% trans 'Categories | Sematec LMS' %}{% endblock %}
+{% block page_heading %}{% trans 'Course Categories' %}{% endblock %}
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'categories' %}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<div class="mg-toolbar"><div class="mg-heading"><div class="mg-heading-icon"><i class="bi bi-tags-fill"></i></div><div><h2>{% trans 'Course Categories' %}</h2><div class="mg-muted">{% trans 'Organized learning paths' %}</div></div></div>{% if can_manage %}<a class="mg-button" href="{% url 'add_course_category' %}"><i class="bi bi-plus-lg"></i> {% trans 'Add Category' %}</a>{% endif %}</div>
+<div class="mg-grid">{% for category in categories %}<article class="mg-category-card"><div class="mg-heading-icon"><i class="bi bi-collection"></i></div><h3>{{ category.name }}</h3><p>{{ category.course_count }} course{{ category.course_count|pluralize }} in this category</p><div class="mg-card-actions"><a href="{% url 'category_detail' category.pk %}" class="mg-button mg-button--sm"><i class="bi bi-eye"></i> {% trans 'View' %}</a>{% if can_manage %}<a href="{% url 'edit_course_category' category.pk %}" class="mg-button mg-button--sm mg-button--outline"><i class="bi bi-pencil"></i> {% trans 'Edit' %}</a>{% endif %}{% if can_manage %}<a href="{% url 'delete_course_category' category.pk %}" class="mg-button mg-button--sm mg-button--outline"><i class="bi bi-trash"></i></a>{% endif %}</div></article>{% empty %}<div class="mg-empty"><h3>{% trans 'No categories yet' %}</h3>{% if can_manage %}<a class="mg-button" href="{% url 'add_course_category' %}">{% trans 'Add Category' %}</a>{% endif %}</div>{% endfor %}</div>
+{% endblock %}

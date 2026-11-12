@@ -1,0 +1,11 @@
+{% extends '_base.html' %}{% load i18n static %}
+{% block page_title %}{% trans 'Surveys' %} | Sematec LMS{% endblock %}
+{% block page_heading %}{% trans 'Surveys' %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/surveys.css' %}">{% endblock %}
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'surveys' %}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<div class="mg-toolbar"><div><h2>{% trans 'Class evaluation' %}</h2><p class="mg-muted">{% trans 'Instructor and student questionnaires are attached to the relevant course.' %}</p></div>{% if can_manage %}<a class="mg-button mg-button--outline" href="{% url 'survey_questions' %}"><i class="bi bi-ui-checks-grid"></i> {% trans 'Manage questions' %}</a>{% endif %}</div>
+<div class="mg-summary-row"><div class="mg-summary-tile"><strong>{{ student_questions }}</strong><span>{% trans 'Active student questions' %}</span></div><div class="mg-summary-tile"><strong>{{ instructor_questions }}</strong><span>{% trans 'Active instructor questions' %}</span></div></div>
+<div class="mg-grid">{% for item in summary %}<article class="mg-panel survey-card"><span class="mg-tag">{% trans 'Course survey' %}</span><h3>{{ item.course.title }}</h3><div class="survey-measure"><strong>{% if item.average %}{{ item.average|floatformat:1 }}{% else %}—{% endif %}</strong><span>/ 5 · {{ item.count }} {% trans 'ratings' %}</span></div><a href="{% url 'survey_course' item.course.pk %}" class="mg-button">{% trans 'Open questionnaire' %}</a></article>{% empty %}<div class="mg-panel">{% trans 'No courses assigned.' %}</div>{% endfor %}</div>
+{% endblock %}

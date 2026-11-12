@@ -1,0 +1,128 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block page_title %}{% trans 'Attendance | Sematec LMS' %}{% endblock %}
+{% block page_heading %}{% trans 'Attendance' %}{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/attendance.css' %}">{% endblock %}
+
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'attendance' %}{% if course %}?course={{ course.pk }}{% endif %}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<section class="attendance-page" aria-label="{% trans 'Attendance management' %}">
+    <div class="attendance-hero">
+        <div>
+            <div class="attendance-overline"><i class="bi bi-clipboard2-check"></i> {% trans 'ATTENDANCE MANAGEMENT' %}</div>
+            
+            
+        </div>
+        <a href="{% url 'academic_calendar' %}" class="att-btn att-secondary"><i class="bi bi-calendar3"></i> {% trans 'Academic calendar' %}</a>
+    </div>
+
+    <form method="get" action="{% url 'attendance_dashboard' %}" class="att-card attendance-pickers" id="attendance-select-form">
+        <div class="att-field">
+            <label for="attendance-course">{% trans '1. Course' %}</label>
+            <select name="course" id="attendance-course" required>
+                <option value="">{% trans 'Select a course' %}</option>
+                {% for item in courses %}
+                <option value="{{ item.pk }}" {% if course.pk == item.pk %}selected{% endif %}>{{ item.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="att-field">
+            <label for="attendance-session">{% trans '2. Class session (from the calendar)' %}</label>
+            <select name="session" id="attendance-session" {% if not course %}disabled{% endif %}>
+                <option value="">{% trans 'Select a class date' %}</option>
+                {% for item in session_choices %}
+                <option value="{{ item.pk }}" data-date-iso="{{ item.date|date:'Y-m-d' }}" data-time="{{ item.start_time|time:'H:i' }}–{{ item.end_time|time:'H:i' }}" data-instructor="{{ item.course_schedule.instructor }}" data-room="{{ item.course_schedule.classroom }}" data-status="{{ item.get_status_display }}" {% if session.pk == item.pk %}selected{% endif %}>
+                    {{ item.date|date:'Y-m-d' }} · {{ item.start_time|time:'H:i' }}–{{ item.end_time|time:'H:i' }} · {{ item.course_schedule.instructor }} ({{ item.get_status_display }})
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="att-btn att-primary" type="submit"><i class="bi bi-arrow-right-circle"></i> {% trans 'Load list' %}</button>
+    </form>
+
+    {% if course and not session_choices %}
+        <div class="att-notice">{% trans "No class sessions have been generated for this course. Check the course's weekly schedule or run" %} <code>{% trans 'python manage.py generate_class_sessions' %}</code>.</div>
+    {% endif %}
+    {% if error_message %}<div class="att-alert att-error" role="alert"><i class="bi bi-exclamation-triangle"></i> {{ error_message }}</div>{% endif %}
+    {% if success_message %}<div class="att-alert att-success" role="status"><i class="bi bi-check-circle"></i> {{ success_message }}</div>{% endif %}
+
+    {% if session %}
+    <div class="attendance-summary att-card">
+        <div>
+            <div class="attendance-overline">{% trans 'CLASS SESSION' %} · <time data-local-date="{{ session.date|date:'Y-m-d' }}">{{ session.date|date:'l, F j, Y' }}</time></div>
+            <h3>{{ session.course_schedule.course.title }}</h3>
+            <p><i class="bi bi-clock"></i> {{ session.start_time|time:'H:i' }}–{{ session.end_time|time:'H:i' }}
+               <span class="att-separator">·</span><i class="bi bi-person-video3"></i> {{ session.course_schedule.instructor }}{% if session.course_schedule.classroom %} <span class="att-separator">·</span><i class="bi bi-door-open"></i> {% trans 'Room' %} {{ session.course_schedule.classroom }}{% endif %}</p>
+            {% if session.status == 'X' and session.cancellation_reason %}
+                <div class="att-cancellation">Cancellation reason: {{ session.cancellation_reason }}</div>
+            {% endif %}
+        </div>
+        <span class="att-pill {% if session.status == 'X' %}att-cancelled{% elif session.status == 'C' %}att-completed{% else %}att-scheduled{% endif %}">{{ session.get_status_display }}</span>
+    </div>
+
+    <div class="attendance-metrics" aria-label="{% trans 'Attendance summary' %}">
+        <div class="att-metric"><span class="att-metric-icon mint"><i class="bi bi-check2-circle"></i></span><div><strong id="att-present">{{ present_count }}</strong><small>{% trans 'Present' %}</small></div></div>
+        <div class="att-metric"><span class="att-metric-icon rose"><i class="bi bi-x-circle"></i></span><div><strong id="att-absent">{{ absent_count }}</strong><small>{% trans 'Absent' %}</small></div></div>
+        <div class="att-metric"><span class="att-metric-icon violet"><i class="bi bi-question-circle"></i></span><div><strong id="att-unmarked">{{ unmarked_count }}</strong><small>{% trans 'Unmarked' %}</small></div></div>
+    </div>
+
+    <section class="att-card attendance-list" aria-labelledby="attendance-student-heading">
+        <div class="attendance-list-header">
+            <div><h3 id="attendance-student-heading">{% trans 'Student attendance' %}</h3>
+                <p>{% trans 'Only one choice per student. Unmarked is not the same as absent.' %}</p></div>
+            <div class="att-export-links">
+                <a class="att-btn att-secondary" href="{% url 'attendance_session_csv' session.pk %}"><i class="bi bi-filetype-csv"></i> {% trans 'Session CSV' %}</a>
+                <a class="att-btn att-secondary" href="{% url 'attendance_course_csv' course.pk %}"><i class="bi bi-file-earmark-arrow-down"></i> {% trans 'Course CSV' %}</a>
+            </div>
+        </div>
+        <form method="post" action="{% url 'attendance_dashboard' %}" id="attendance-entry">
+            {% csrf_token %}
+            <input type="hidden" name="course" value="{{ course.pk }}">
+            <input type="hidden" name="session" value="{{ session.pk }}">
+            <div class="att-table-scroll">
+                <table class="att-table">
+                    <thead><tr><th scope="col">{% trans 'Student' %}</th><th scope="col">{% trans 'Register' %}</th><th scope="col">{% trans 'Attendance status' %}</th></tr></thead>
+                    <tbody>
+                    {% for row in register_rows %}
+                        <tr class="att-student-row">
+                            <td><span class="att-student-avatar"><i class="bi bi-person"></i></span>
+                                <strong>{{ row.register.student }}</strong>
+                                <small>#{{ row.register.pk }}</small></td>
+                            <td>{{ row.register.get_status_display }}{% if not row.editable %}<small class="att-historical">{% trans 'Historical / read only' %}</small>{% endif %}</td>
+                            <td>
+                                <fieldset class="att-status-options" aria-label="Attendance for {{ row.register.student }}" {% if session.status == 'X' or not row.editable %}disabled{% endif %}>
+                                    <label class="att-choice present"><input type="radio" name="status_{{ row.register.pk }}" value="P" {% if row.status == 'P' %}checked{% endif %}><span><i class="bi bi-check-lg"></i> {% trans 'Present' %}</span></label>
+                                    <label class="att-choice absent"><input type="radio" name="status_{{ row.register.pk }}" value="A" {% if row.status == 'A' %}checked{% endif %}><span><i class="bi bi-x-lg"></i> {% trans 'Absent' %}</span></label>
+                                    <label class="att-choice clear"><input type="radio" name="status_{{ row.register.pk }}" value="" {% if not row.status %}checked{% endif %}><span>{% trans 'Clear' %}</span></label>
+                                </fieldset>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="3" class="att-empty">{% trans 'No students have registered in this course yet.' %}</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% if session.status != 'X' %}
+            <div class="att-save-bar">
+                <label class="att-complete"><input type="checkbox" name="mark_completed" id="mark-completed">
+                    {% trans 'Mark this session as' %} <strong>{% trans 'Completed' %}</strong> {% trans 'when all active students are marked' %}
+                </label>
+                <button type="submit" class="att-btn att-primary"><i class="bi bi-cloud-check"></i> {% trans 'Save attendance' %}</button>
+            </div>
+            {% else %}
+                <p class="att-notice">{% trans 'Attendance cannot be saved for cancelled sessions. Historical data remain visible.' %}</p>
+            {% endif %}
+        </form>
+    </section>
+    {% elif not course %}
+        <div class="att-placeholder"><i class="bi bi-clipboard2-data"></i><strong>{% trans 'Choose a course to begin' %}</strong><span>{% trans 'Your class sessions and registered students will appear here.' %}</span></div>
+    {% endif %}
+</section>
+{% endblock %}
+
+{% block extra_js %}<script src="{% static 'lms/js/attendance.js' %}" defer></script>{% endblock %}

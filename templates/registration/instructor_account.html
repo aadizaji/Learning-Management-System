@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+{% load static i18n %}
+{% block page_title %}{% if instructor_only %}{% trans 'Create Instructor Account' %}{% else %}{% trans 'Create User Account' %}{% endif %} | Sematec LMS{% endblock %}
+{% block page_heading %}{% if instructor_only %}{% trans 'Create Instructor Account' %}{% else %}{% trans 'Create User Account' %}{% endif %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/user-accounts.css' %}">{% endblock %}
+{% block content %}
+<a class="mg-back" href="{% url 'user_management' %}"><i class="bi bi-arrow-left"></i> {% trans 'User Management' %}</a>
+<div class="page-header account-page-head"><div class="account-page-symbol"><i class="bi bi-person-vcard"></i></div><div>
+  <h2>{% if instructor_only %}{% trans 'New instructor login' %}{% else %}{% trans 'New user account' %}{% endif %}</h2>
+  <p>{% if instructor_only %}{% trans 'Link an existing instructor to a secure login.' %}{% else %}{% trans 'Choose a role and create credentials for this team member.' %}{% endif %}</p>
+</div></div>
+<div class="form-card account-form-card">
+<form method="post" autocomplete="off" novalidate>{% csrf_token %}
+  {% if form.non_field_errors %}<div class="alert-soft" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+  {% if form.errors %}<div class="alert-soft" role="alert">{% trans 'Please review the highlighted fields and try again.' %}</div>{% endif %}
+  <div class="account-form-grid">
+    {% for field in form %}
+    {% if field.is_hidden %}{{ field }}{% else %}
+    <div data-account-field="{{ field.name }}" class="account-field {% if field.name == 'instructor' or field.name == 'username' or field.name == 'email' %}account-field-wide{% endif %}">
+      <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}{% if field.field.required %}<span class="account-required"> *</span>{% endif %}</label>
+      {{ field }}
+      {% for err in field.errors %}<div class="field-error">{{ err }}</div>{% endfor %}
+      {% if field.name == 'instructor' %}<small class="account-help">{% trans 'Choose an instructor already registered in the Instructors section.' %}</small>{% elif field.name == 'role' %}<small class="account-help">{% trans 'Managers administer the LMS; instructors only manage their assigned classes.' %}</small>{% endif %}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="account-form-footer">
+    <a class="mg-button mg-button--outline" href="{% url 'user_management' %}">{% trans 'Cancel' %}</a>
+    <button class="mg-button" type="submit"><i class="bi bi-check2-circle"></i> {% trans 'Create account' %}</button>
+  </div>
+</form>
+</div>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'lms/js/user-accounts.js' %}" defer></script>{% endblock %}

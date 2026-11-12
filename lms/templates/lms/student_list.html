@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% block page_title %}{% trans 'Students | Sematec LMS' %}{% endblock %}
+{% block page_heading %}{% trans 'Students' %}{% endblock %}
+
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'students' %}{% if request.GET.urlencode %}?{{ request.GET.urlencode }}{% endif %}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<div class="mg-toolbar"><div class="mg-heading"><div class="mg-heading-icon"><i class="bi bi-people-fill"></i></div><div><h2>{% trans 'Student Directory' %}</h2><div class="mg-muted">{{ total_count }} students registered in the academy</div></div></div>{% if can_manage %}<a class="mg-button" href="{% url 'add_student' %}"><i class="bi bi-plus-lg"></i> {% trans 'Add Student' %}</a>{% endif %}</div>
+<form method="get" class="mg-filter" role="search"><input name="q" type="search" placeholder="{% trans 'Search by name or city...' %}" value="{{ q }}" aria-label="{% trans 'Search students' %}"><button class="mg-button" type="submit">{% trans 'Search' %}</button>{% if q %}<a class="mg-button mg-button--outline" href="{% url 'student_list' %}">{% trans 'Clear' %}</a>{% endif %}</form>
+<div class="mg-grid">{% for student in students %}
+<article class="mg-person-card"><div class="mg-person-top">{% if student.profile_img %}<img class="mg-avatar" src="{{ student.profile_img.url }}" alt="{{ student }}" loading="lazy">{% else %}<div class="mg-avatar">{{ student.first_name|slice:':1' }}{{ student.last_name|slice:':1' }}</div>{% endif %}</div>
+<div class="mg-person-content"><h3>{{ student }}</h3><span class="mg-tag">Student #{{ student.pk }}</span><div class="mg-person-meta"><i class="bi bi-geo-alt"></i>{{ student.city }}</div><div class="mg-person-meta"><i class="bi bi-envelope"></i>{{ student.email }}</div><div class="mg-person-meta"><i class="bi bi-telephone"></i>{{ student.phone_number }}</div>
+<div class="mg-card-actions"><a class="mg-button mg-button--sm" href="{% url 'student_detail' student.pk %}"><i class="bi bi-eye"></i> {% trans 'Profile' %}</a>{% if can_manage %}<a class="mg-button mg-button--sm mg-button--outline" href="{% url 'edit_student' student.pk %}"><i class="bi bi-pencil"></i> {% trans 'Edit' %}</a>{% endif %}{% if can_manage %}<a class="mg-button mg-button--sm mg-button--outline" href="{% url 'delete_student' student.pk %}" aria-label="Delete {{ student }}"><i class="bi bi-trash"></i></a>{% endif %}</div></div></article>
+{% empty %}<div class="mg-empty"><i class="bi bi-people"></i><h3>{% trans 'No students found' %}</h3><p class="mg-muted">{% trans 'Try another search or add a student.' %}</p>{% if can_manage %}<a class="mg-button" href="{% url 'add_student' %}">{% trans 'Add Student' %}</a>{% endif %}</div>{% endfor %}</div>
+{% with page_obj=students %}{% include 'lms/_pagination.html' %}{% endwith %}
+{% endblock %}

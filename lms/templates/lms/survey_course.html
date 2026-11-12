@@ -1,0 +1,13 @@
+{% extends '_base.html' %}{% load i18n static %}
+{% block page_title %}{{ course.title }} | {% trans 'Surveys' %}{% endblock %}
+{% block page_heading %}{% trans 'Course Surveys' %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/surveys.css' %}">{% endblock %}
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'surveys' %}?course={{ course.pk }}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<a href="{% url 'survey_dashboard' %}" class="mg-back"><i class="bi bi-arrow-left"></i> {% trans 'Surveys' %}</a>
+<div class="mg-toolbar"><h2>{{ course.title }}</h2>{% if is_manager %}<a class="mg-button mg-button--outline" href="{% url 'survey_results' course.pk %}"><i class="bi bi-clipboard-data"></i> {% trans 'Evaluation report' %}</a>{% endif %}</div>
+<div class="survey-two-col"><section class="mg-panel"><h3>{% trans 'Instructor questionnaire' %}</h3><p class="mg-muted">{% trans 'Each instructor evaluates facilities and the training environment for their class.' %}</p>{% for instructor in instructors %}<a class="survey-person" href="{% url 'survey_respond' course.pk 'I' instructor.pk %}"><i class="bi bi-easel2"></i><span>{{ instructor }}</span><i class="bi bi-chevron-left"></i></a>{% empty %}<p class="mg-muted">{% trans 'No instructor schedule is assigned to this course.' %}</p>{% endfor %}</section>
+{% if is_manager %}<section class="mg-panel"><h3>{% trans 'Student questionnaire' %}</h3><p class="mg-muted">{% trans 'Education staff records the feedback; students do not need LMS accounts.' %}</p>{% for register in registers %}<a class="survey-person" href="{% url 'survey_respond' course.pk 'S' register.pk %}"><i class="bi bi-person"></i><span>{{ register.student }} <small>· {{ register.instructor }}</small></span><i class="bi bi-chevron-left"></i></a>{% empty %}<p class="mg-muted">{% trans 'No registrations for this course.' %}</p>{% endfor %}</section>{% endif %}</div>
+<section class="mg-panel"><h3>{% trans 'Saved responses' %}</h3><div class="mg-table-wrap"><table class="mg-table"><thead><tr><th>{% trans 'Respondent' %}</th><th>{% trans 'Questionnaire' %}</th><th>{% trans 'Average rating' %}</th><th>{% trans 'Updated' %}</th></tr></thead><tbody>{% for r in responses %}<tr><td>{% if r.instructor %}{{ r.instructor }}{% else %}{{ r.register.student }}{% endif %}</td><td>{{ r.get_audience_display }}</td><td>{{ r.average_rating|floatformat:1 }} / 5</td><td>{{ r.updated_at|date:'Y-m-d' }}</td></tr>{% empty %}<tr><td colspan="4" class="mg-muted">{% trans 'No completed questionnaires yet.' %}</td></tr>{% endfor %}</tbody></table></div></section>
+{% endblock %}

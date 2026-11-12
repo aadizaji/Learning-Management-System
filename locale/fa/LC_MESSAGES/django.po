@@ -1,0 +1,1872 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-03 16:03+0000\n"
+"PO-Revision-Date: 2026-11-03 00:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fa\n"
+"Language-Team: fa <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "1. Course"
+msgstr "۱. دوره"
+
+msgid "2. Class session (from the calendar)"
+msgstr "۲. جلسه کلاس (از تقویم)"
+
+msgid "A completion date is only valid for a completed register."
+msgstr "تاریخ پایان فقط برای ثبت‌نام تکمیل‌شده معتبر است."
+
+msgid "A draft certificate appears immediately; fill in the fields to update it."
+msgstr "پیش‌نمایش با ورود اطلاعات به‌روز می‌شود."
+
+msgid ""
+"A focused space for managing courses, learning progress, and academic "
+"milestones."
+msgstr "محیطی یکپارچه برای مدیریت دوره‌ها و پیشرفت آموزشی."
+
+msgid "A question with saved answers cannot change its audience."
+msgstr "نوع مخاطب سؤال دارای پاسخ ثبت‌شده قابل تغییر نیست."
+
+msgid "ACADEMIC PLANNING"
+msgstr "برنامه‌ریزی آموزشی"
+
+msgid "ACADEMY"
+msgstr "آموزشگاه"
+
+msgid "ADMINISTRATION"
+msgstr "مدیریت سیستم"
+
+msgid "ATTENDANCE MANAGEMENT"
+msgstr "مدیریت حضور و غیاب"
+
+msgid "Absent"
+msgstr "غایب"
+
+msgid "Academic Calendar"
+msgstr "تقویم آموزشی"
+
+msgid "Academic Calendar | Sematec LMS"
+msgstr "تقویم آموزشی | سامانه سماتک"
+
+msgid "Academic calendar"
+msgstr "تقویم آموزشی"
+
+msgid "Academy overview"
+msgstr "نمای کلی آموزشگاه"
+
+msgid "Account"
+msgstr "حساب کاربری"
+
+msgid "Account menu"
+msgstr "منوی حساب"
+
+msgid "Account role"
+msgstr "نقش کاربر"
+
+msgid "Account role updated."
+msgstr "نقش کاربر به‌روزرسانی شد."
+
+msgid "Accounts"
+msgstr "حساب‌ها"
+
+msgid "Actions"
+msgstr "عملیات"
+
+msgid "Activate"
+msgstr "فعال کردن"
+
+msgid "Active"
+msgstr "فعال"
+
+msgid "Active / In-progress courses"
+msgstr "دوره‌های فعال یا در حال برگزاری"
+
+msgid "Active courses"
+msgstr "دوره‌های فعال"
+
+msgid "Active instructor questions"
+msgstr "سؤالات فعال اساتید"
+
+msgid "Active student questions"
+msgstr "سؤالات فعال دانشجویان"
+
+msgid "Actual completion date (optional)"
+msgstr "تاریخ واقعی پایان دوره (اختیاری)"
+
+msgid "Add Category"
+msgstr "افزودن دسته‌بندی"
+
+msgid "Add Course"
+msgstr "افزودن دوره"
+
+msgid "Add Exam"
+msgstr "افزودن آزمون"
+
+msgid "Add Instructor"
+msgstr "افزودن مدرس"
+
+msgid "Add Instructor Login"
+msgstr "ساخت حساب استاد"
+
+msgid "Add New Course"
+msgstr "افزودن دوره جدید"
+
+msgid "Add New Course Category"
+msgstr "افزودن دسته‌بندی جدید"
+
+msgid "Add New Exam"
+msgstr "افزودن آزمون جدید"
+
+msgid "Add New Instructor"
+msgstr "افزودن مدرس جدید"
+
+msgid "Add New Student"
+msgstr "افزودن دانشجوی جدید"
+
+msgid "Add Register"
+msgstr "ثبت‌نام جدید"
+
+msgid "Add Student"
+msgstr "افزودن دانشجو"
+
+msgid "Add a course to this category."
+msgstr "دوره‌ای به این دسته‌بندی اضافه کنید."
+
+msgid "Add a course topic"
+msgstr "عنوان سرفصل را بنویسید"
+
+msgid "Add another account"
+msgstr "ورود با حساب دیگر"
+
+msgid "Add another day"
+msgstr "افزودن روز دیگر"
+
+msgid ""
+"Add at least one weekly class slot to show this course on the calendar. Choose "
+"an instructor assigned above."
+msgstr "برای نمایش در تقویم، حداقل یک برنامه هفتگی تعریف کنید."
+
+msgid "Add question"
+msgstr "افزودن سؤال"
+
+msgid "Add questionnaire question"
+msgstr "افزودن سؤال نظرسنجی"
+
+msgid "Add topic"
+msgstr "افزودن سرفصل"
+
+msgid "Address"
+msgstr "آدرس"
+
+msgid "Advanced"
+msgstr "پیشرفته"
+
+msgid "All categories"
+msgstr "همه دسته‌بندی‌ها"
+
+msgid "All certificates"
+msgstr "همه گواهینامه‌ها"
+
+msgid "All courses"
+msgstr "همه دوره‌ها"
+
+msgid "All exams"
+msgstr "همه آزمون‌ها"
+
+msgid "All instructors"
+msgstr "همه مدرسان"
+
+msgid "All registrations"
+msgstr "همه ثبت‌نام‌ها"
+
+msgid "All students"
+msgstr "همه دانشجویان"
+
+msgid "All types"
+msgstr "همه نوع‌ها"
+
+msgid "Already have an account?"
+msgstr "قبلاً حساب ساخته‌اید؟"
+
+msgid "An account with this email already exists."
+msgstr "حسابی با این ایمیل از قبل وجود دارد."
+
+msgid "Are you sure you want to delete"
+msgstr "آیا برای حذف این مورد مطمئن هستید"
+
+msgid "Associate degree"
+msgstr "فوق‌دیپلم"
+
+msgid "Associated courses"
+msgstr "دوره‌های مرتبط"
+
+msgid "At least one weekly class must take place on the course start day."
+msgstr "حداقل یکی از برنامه‌های هفتگی باید در روز شروع دوره برگزار شود."
+
+msgid "Attendance"
+msgstr "حضور و غیاب"
+
+msgid ""
+"Attendance cannot be saved for cancelled sessions. Historical data remain "
+"visible."
+msgstr "برای جلسات لغوشده حضور و غیاب ذخیره نمی‌شود؛ سوابق همچنان قابل مشاهده هستند."
+
+msgid "Attendance management"
+msgstr "مدیریت حضور و غیاب"
+
+msgid "Attendance status"
+msgstr "وضعیت حضور"
+
+msgid "Attendance summary"
+msgstr "خلاصه حضور و غیاب"
+
+msgid "Attendance | Sematec LMS"
+msgstr "حضور و غیاب | سامانه سماتک"
+
+msgid "Audience"
+msgstr "گروه پاسخ‌دهنده"
+
+msgid "Average"
+msgstr "میانگین"
+
+msgid "Average rating"
+msgstr "میانگین امتیاز"
+
+msgid "Bachelor"
+msgstr "کارشناسی"
+
+msgid "Back to Dashboard"
+msgstr "بازگشت به داشبورد"
+
+msgid "Beginner"
+msgstr "مقدماتی"
+
+msgid "Birth Date"
+msgstr "تاریخ تولد"
+
+msgid "Birth date"
+msgstr "تاریخ تولد"
+
+msgid "Browse courses"
+msgstr "مرور دوره‌ها"
+
+msgid "Browse exams"
+msgstr "مرور آزمون‌ها"
+
+msgid "Browse instructors"
+msgstr "مرور مدرسان"
+
+msgid "Browse students"
+msgstr "مرور دانشجویان"
+
+msgid "Build your future."
+msgstr "آینده‌ات را بساز."
+
+msgid "CEO"
+msgstr "مدیرعامل"
+
+msgid "CERTIFICATE MANAGEMENT"
+msgstr "مدیریت گواهینامه‌ها"
+
+msgid "CERTIFICATE STUDIO"
+msgstr "صدور گواهینامه"
+
+msgid "CLASS SESSION"
+msgstr "جلسه کلاس"
+
+msgid "Calendar summary"
+msgstr "خلاصه تقویم"
+
+msgid "Cancel"
+msgstr "انصراف"
+
+msgid "Canceled"
+msgstr "لغوشده"
+
+msgid "Cancellation reason"
+msgstr "دلیل لغو"
+
+msgid "Cancellation reason:"
+msgstr "دلیل لغو:"
+
+msgid "Cancelled"
+msgstr "لغوشده"
+
+msgid "Capacity"
+msgstr "ظرفیت"
+
+msgid "Categories"
+msgstr "دسته‌بندی‌ها"
+
+msgid "Categories "
+msgstr " Sematec LMS|دسته‌بندی‌ها | سامانه سماتک"
+
+msgid "Categories | Sematec LMS"
+msgstr "Categories | Sematec LMS"
+
+msgid "Category"
+msgstr "دسته‌بندی"
+
+msgid "Category Name"
+msgstr "نام دسته‌بندی"
+
+msgid "Certificate details"
+msgstr "اطلاعات گواهینامه"
+
+msgid "Certificate preview language"
+msgstr "زبان پیش‌نمایش مدرک"
+
+msgid "Certificate saved. Both language versions can now be downloaded below."
+msgstr "گواهینامه ذخیره شد. اکنون هر دو زبان قابل دانلود هستند."
+
+msgid "Certificates"
+msgstr "گواهینامه‌ها"
+
+msgid "Certificates | Sematec LMS"
+msgstr "گواهینامه‌ها | سامانه سماتک"
+
+msgid "Change month"
+msgstr "تغییر ماه"
+
+msgid "Changes shown in the live preview are not stored until you save."
+msgstr "تغییرات پیش‌نمایش تا زمان ذخیره ثبت نمی‌شوند."
+
+msgid "Choose a course to begin"
+msgstr "برای شروع، دوره‌ای انتخاب کنید"
+
+msgid "Choose a date from the calendar · YYYY-MM-DD"
+msgstr "تاریخ را از تقویم انتخاب کنید · YYYY-MM-DD"
+
+msgid "Choose a role and create credentials for this team member."
+msgstr "نقش کاربر را انتخاب کنید و اطلاعات ورود او را بسازید."
+
+msgid "Choose an existing instructor"
+msgstr "یک استاد ثبت‌شده انتخاب کنید"
+
+msgid ""
+"Choose an existing instructor profile. The account will only access its "
+"assigned classes."
+msgstr ""
+"پروفایل یکی از اساتید موجود را انتخاب کنید. حساب فقط به کلاس‌های همان استاد "
+"دسترسی دارد."
+
+msgid "Choose an instructor already registered in the Instructors section."
+msgstr "یکی از اساتیدی را انتخاب کنید که قبلاً در بخش اساتید ثبت شده است."
+
+msgid ""
+"Choose an registered student and course, enter a grade and serial, and preview "
+"the official layout instantly."
+msgstr "دوره و دانشجو را انتخاب کرده و مشخصات مدرک را وارد کنید."
+
+msgid "Choose the instructor profile for this account."
+msgstr "پرونده استاد مربوط به این حساب را انتخاب کنید."
+
+msgid "Choose “Issue new certificate” to create your first record."
+msgstr "برای شروع گواهینامه جدید صادر کنید."
+
+msgid "City"
+msgstr "شهر"
+
+msgid "Class evaluation"
+msgstr "ارزیابی کلاس"
+
+msgid "Classroom"
+msgstr "شماره کلاس"
+
+msgid "Clear"
+msgstr "پاک کردن"
+
+msgid "Coming Soon"
+msgstr "به‌زودی"
+
+msgid "Coming Soon ..."
+msgstr "به‌زودی"
+
+msgid "Completed"
+msgstr "برگزارشده"
+
+msgid "Comprehensive"
+msgstr "جامع"
+
+msgid "Connect an instructor to a login account"
+msgstr "اتصال استاد به حساب ورود"
+
+msgid "Course"
+msgstr "دوره"
+
+msgid "Course #"
+msgstr "دوره شماره"
+
+msgid "Course CSV"
+msgstr "CSV دوره"
+
+msgid "Course Catalogue"
+msgstr "فهرست دوره‌ها"
+
+msgid "Course Categories"
+msgstr "دسته‌بندی دوره‌ها"
+
+msgid "Course Category"
+msgstr "دسته‌بندی دوره"
+
+msgid "Course Details"
+msgstr "جزئیات دوره"
+
+msgid "Course Surveys"
+msgstr "نظرسنجی‌های دوره"
+
+msgid "Course capacity occupied"
+msgstr "ظرفیت اشغال‌شده دوره"
+
+msgid "Course category"
+msgstr "دسته‌بندی دوره"
+
+msgid "Course evaluation"
+msgstr "ارزیابی دوره"
+
+msgid "Course evaluations"
+msgstr "ارزیابی‌های دوره"
+
+msgid "Course level"
+msgstr "سطح دوره"
+
+msgid "Course registers"
+msgstr "ثبت‌نام‌های دوره"
+
+msgid "Course status"
+msgstr "وضعیت دوره"
+
+msgid "Course survey"
+msgstr "نظرسنجی دوره"
+
+msgid "Course surveys and evaluation"
+msgstr "نظرسنجی و ارزیابی دوره"
+
+msgid "Course syllabus"
+msgstr "سرفصل‌های دوره"
+
+msgid "Course title in Persian"
+msgstr "عنوان فارسی دوره"
+
+msgid "Courses"
+msgstr "دوره‌ها"
+
+msgid "Courses associated with this category"
+msgstr "دوره‌های این دسته‌بندی"
+
+msgid "Courses with sessions"
+msgstr "دوره‌های دارای جلسه"
+
+msgid "Courses without weekly schedules"
+msgstr "دوره‌های بدون برنامه هفتگی"
+
+msgid "Courses | Sematec LMS"
+msgstr "دوره‌ها | سامانه سماتک"
+
+msgid "Create Instructor Account"
+msgstr "ایجاد حساب استاد"
+
+msgid "Create User Account"
+msgstr "ایجاد حساب کاربری"
+
+msgid "Create a certificate of training"
+msgstr "ایجاد گواهینامه آموزشی"
+
+msgid "Create a new account"
+msgstr "ساخت حساب جدید"
+
+msgid "Create account"
+msgstr "ایجاد حساب"
+
+msgid "Create another account"
+msgstr "ایجاد حساب دیگر"
+
+msgid "Create exams and record student grades—no quiz engine required."
+msgstr "تعریف آزمون و ثبت نمرات دانشجویان"
+
+msgid "Create the first examination to start tracking grades."
+msgstr "برای شروع اولین آزمون را تعریف کنید."
+
+msgid "Create your account"
+msgstr "حساب خود را بسازید"
+
+msgid "Dashboard"
+msgstr "داشبورد"
+
+msgid "Dashboard | Sematec LMS"
+msgstr "داشبورد | سامانه سماتک"
+
+msgid "Date"
+msgstr "تاریخ"
+
+msgid "Date of birth"
+msgstr "تاریخ تولد"
+
+msgid "Day details"
+msgstr "جزئیات روز"
+
+msgid "Deactivate"
+msgstr "غیرفعال کردن"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Delete Certificate"
+msgstr "حذف گواهینامه"
+
+msgid "Delete Course"
+msgstr "حذف دوره"
+
+msgid "Delete Course Category"
+msgstr "حذف دسته‌بندی"
+
+msgid "Delete Exam"
+msgstr "حذف آزمون"
+
+msgid "Delete Instructor"
+msgstr "حذف مدرس"
+
+msgid "Delete Register"
+msgstr "حذف ثبت‌نام"
+
+msgid "Delete Student"
+msgstr "حذف دانشجو"
+
+msgid "Delete and preview"
+msgstr "حذف و پیش‌نمایش"
+
+msgid "Delete survey question"
+msgstr "حذف سؤال نظرسنجی"
+
+msgid "Delivery mode"
+msgstr "نحوه برگزاری"
+
+msgid "Description"
+msgstr "توضیحات"
+
+msgid "Diploma"
+msgstr "دیپلم"
+
+msgid "Download English PDF"
+msgstr "دانلود PDF انگلیسی"
+
+msgid "Download Persian PDF"
+msgstr "دانلود PDF فارسی"
+
+msgid "Download saved certificate"
+msgstr "دانلود مدرک ذخیره‌شده"
+
+msgid ""
+"Downloads reflect the last saved version. Save edits before downloading updated"
+" files."
+msgstr "فایل‌ها از آخرین نسخه ذخیره‌شده ساخته می‌شوند."
+
+msgid "Dropped"
+msgstr "انصراف‌داده"
+
+msgid "Duration"
+msgstr "مدت"
+
+msgid "Duration (hours)"
+msgstr "مدت (ساعت)"
+
+msgid "EN PDF"
+msgstr "PDF انگلیسی"
+
+msgid ""
+"Each instructor evaluates facilities and the training environment for their "
+"class."
+msgstr "هر استاد امکانات و محیط آموزشی کلاس خودش را ارزیابی می‌کند."
+
+msgid "Edit"
+msgstr "ویرایش"
+
+msgid "Edit Course"
+msgstr "ویرایش دوره"
+
+msgid "Edit Course Category"
+msgstr "ویرایش دسته‌بندی"
+
+msgid "Edit Exam"
+msgstr "ویرایش آزمون"
+
+msgid "Edit Instructor"
+msgstr "ویرایش مدرس"
+
+msgid "Edit Register"
+msgstr "ویرایش ثبت‌نام"
+
+msgid "Edit Student"
+msgstr "ویرایش دانشجو"
+
+msgid "Edit and preview"
+msgstr "ویرایش و پیش‌نمایش"
+
+msgid "Edit course schedules"
+msgstr "ویرایش برنامه کلاس‌ها"
+
+msgid "Edit question"
+msgstr "ویرایش سؤال"
+
+msgid "Education"
+msgstr "تحصیلات"
+
+msgid "Education staff records the feedback; students do not need LMS accounts."
+msgstr "مسئول آموزش نظرات دانشجو را ثبت می‌کند؛ دانشجو نیازی به حساب سامانه ندارد."
+
+msgid "Educational Certification"
+msgstr "مدرک تحصیلی"
+
+msgid "Educational certification"
+msgstr "مدرک تحصیلی"
+
+msgid "Email"
+msgstr "ایمیل"
+
+msgid "Email address"
+msgstr "آدرس ایمیل"
+
+msgid "Employee"
+msgstr "کارمند"
+
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgid "End date"
+msgstr "تاریخ پایان"
+
+msgid "End time"
+msgstr "ساعت پایان"
+
+msgid "English"
+msgstr "انگلیسی"
+
+msgid "English · Gregorian calendar"
+msgstr "تقویم میلادی"
+
+msgid "Enter a valid non-negative price in toman."
+msgstr "قیمت معتبر و غیرمنفی به تومان وارد کنید."
+
+msgid "Enter the category's details below."
+msgstr "اطلاعات دسته‌بندی را وارد کنید."
+
+msgid "Enter the course's details below."
+msgstr "اطلاعات دوره را وارد کنید."
+
+msgid "Enter the instructor's details below."
+msgstr "اطلاعات مدرس را وارد کنید."
+
+msgid "Enter the job title"
+msgstr "عنوان شغل را وارد کنید"
+
+msgid "Enter the student's details below."
+msgstr "اطلاعات دانشجو را وارد کنید."
+
+msgid "Enter your credentials to continue."
+msgstr "برای ادامه اطلاعات ورود خود را وارد کنید."
+
+msgid "Enter your password"
+msgstr "رمز عبور را وارد کنید"
+
+msgid "Evaluation report"
+msgstr "گزارش ارزیابی"
+
+msgid "Evaluation summary"
+msgstr "خلاصه ارزیابی"
+
+msgid "Events are saved class sessions. Changes in Django Admin appear here."
+msgstr "رویدادها از جلسات ذخیره‌شده خوانده می‌شوند."
+
+msgid "Exam Details"
+msgstr "جزئیات آزمون"
+
+msgid "Exam date"
+msgstr "تاریخ آزمون"
+
+msgid "Exam details"
+msgstr "جزئیات آزمون"
+
+msgid "Exam title"
+msgstr "عنوان آزمون"
+
+msgid "Exam type"
+msgstr "نوع آزمون"
+
+msgid "Examination Management"
+msgstr "مدیریت آزمون‌ها"
+
+msgid "Examinations"
+msgstr "آزمون‌ها"
+
+msgid "Examinations | Sematec LMS"
+msgstr "آزمون‌ها | سامانه سماتک"
+
+msgid "Example: 36 months = three years. Zero disables reminders."
+msgstr "مثال: ۳۶ ماه برابر با سه سال است. صفر یعنی بدون نیاز به بازآموزی."
+
+msgid "Example: SEM-2026-001. The number is checked for uniqueness before saving."
+msgstr "مثال: SEM-2026-001. سریال باید یکتا باشد."
+
+msgid "Existing answers will be preserved and the question will be archived."
+msgstr "پاسخ‌های ثبت‌شده حفظ می‌شوند و سؤال از بانک سؤالات کنار گذاشته خواهد شد."
+
+msgid "Export CSV"
+msgstr "دریافت گزارش CSV"
+
+msgid "Export languages"
+msgstr "زبان‌های خروجی"
+
+msgid "FA PDF"
+msgstr "PDF فارسی"
+
+msgid "Failed"
+msgstr "مردود"
+
+msgid "Father's Name"
+msgstr "نام پدر"
+
+msgid "Father's name"
+msgstr "نام پدر"
+
+msgid "Female"
+msgstr "زن"
+
+msgid "File formats"
+msgstr "فرمت‌های فایل"
+
+msgid "Filter"
+msgstr "فیلتر"
+
+msgid "Filter by category"
+msgstr "فیلتر دسته‌بندی"
+
+msgid "Filter by course category"
+msgstr "فیلتر دسته‌بندی دوره"
+
+msgid "Filter by instructor"
+msgstr "فیلتر مدرس"
+
+msgid "Filter calendar"
+msgstr "فیلتر تقویم"
+
+msgid "Final score"
+msgstr "نمره نهایی"
+
+msgid "Find an exam or course..."
+msgstr "جست‌وجوی آزمون یا دوره..."
+
+msgid "First Name"
+msgstr "نام"
+
+msgid "First name"
+msgstr "نام"
+
+msgid ""
+"For security, new accounts are created by a Manager from User Management. Sign "
+"in with your existing account."
+msgstr ""
+"برای حفظ امنیت، حساب‌های جدید توسط مدیر از بخش مدیریت کاربران ساخته می‌شوند. با"
+" حساب موجود وارد شوید."
+
+msgid "Friday"
+msgstr "جمعه"
+
+msgid "Gender"
+msgstr "جنسیت"
+
+msgid "Grade"
+msgstr "نمره"
+
+msgid "Grade / 100"
+msgstr "نمره از ۱۰۰"
+
+msgid "Grades saved"
+msgstr "نمره‌های ثبت‌شده"
+
+msgid "Grades saved successfully."
+msgstr "نمره‌ها با موفقیت ذخیره شدند."
+
+msgid "Head"
+msgstr "رئیس"
+
+msgid "Historical / read only"
+msgstr "سابقه / فقط خواندنی"
+
+msgid "Hold Ctrl (Cmd on Mac) to select more than one."
+msgstr "برای انتخاب چند گزینه Ctrl را نگه دارید."
+
+msgid "In Progress"
+msgstr "در حال برگزاری"
+
+msgid "In person"
+msgstr "حضوری"
+
+msgid "In person and remote"
+msgstr "حضوری و غیرحضوری"
+
+msgid "Inactive"
+msgstr "غیرفعال"
+
+msgid "Individual evaluations"
+msgstr "ارزیابی‌های فردی"
+
+msgid "Initial setup has already been completed."
+msgstr "راه‌اندازی اولیه قبلاً انجام شده است."
+
+msgid "Instructor"
+msgstr "استاد"
+
+msgid "Instructor #"
+msgstr "مدرس شماره"
+
+msgid "Instructor Account"
+msgstr "حساب استاد"
+
+msgid "Instructor Accounts"
+msgstr "حساب‌های اساتید"
+
+msgid "Instructor Directory"
+msgstr "فهرست مدرسان"
+
+msgid "Instructor Profile"
+msgstr "پروفایل مدرس"
+
+msgid "Instructor and student questionnaires are attached to the relevant course."
+msgstr "پرسش‌نامه‌های استاد و دانشجو به دوره مربوط متصل‌اند."
+
+msgid "Instructor evaluations"
+msgstr "ارزیابی‌های استاد"
+
+msgid "Instructor feedback"
+msgstr "نظرات اساتید"
+
+msgid "Instructor information"
+msgstr "اطلاعات مدرس"
+
+msgid "Instructor profile"
+msgstr "پرونده استاد"
+
+msgid "Instructor questionnaire"
+msgstr "پرسش‌نامه استاد"
+
+msgid "Instructors"
+msgstr "مدرسان"
+
+msgid "Instructors | Sematec LMS"
+msgstr "مدرسان | سامانه سماتک"
+
+msgid "Invalid account role."
+msgstr "نقش حساب معتبر نیست."
+
+msgid "Invalid role."
+msgstr "نقش معتبر نیست."
+
+msgid "Issue & save certificate"
+msgstr "صدور و ذخیره مدرک"
+
+msgid "Issue date"
+msgstr "تاریخ صدور"
+
+msgid "Issue new certificate"
+msgstr "صدور گواهینامه جدید"
+
+msgid "Issued"
+msgstr "صادرشده"
+
+msgid "Issued certificates"
+msgstr "گواهینامه‌های صادرشده"
+
+msgid "JOIN THE ACADEMY"
+msgstr "عضویت در آموزشگاه"
+
+msgid "Job"
+msgstr "شغل"
+
+msgid "Job title"
+msgstr "عنوان شغل"
+
+msgid "Keep moving forward"
+msgstr "همیشه رو به جلو"
+
+msgid "LOOKING AHEAD"
+msgstr "پیش رو"
+
+msgid "Language"
+msgstr "زبان"
+
+msgid "Last Name"
+msgstr "نام خانوادگی"
+
+msgid "Last name"
+msgstr "نام خانوادگی"
+
+msgid "Learn. Grow."
+msgstr "یاد بگیر. پیشرفت کن."
+
+msgid "Learning Management System"
+msgstr "سامانه مدیریت آموزشی"
+
+msgid "Leave a grade empty to mark it as not graded. Dropped registers are read-only."
+msgstr "برای نمره ثبت‌نشده، فیلد را خالی بگذارید. موارد انصرافی فقط خواندنی هستند."
+
+msgid "Level"
+msgstr "سطح"
+
+msgid "Link an existing instructor to a secure login."
+msgstr "حساب کاربری را به پرونده یکی از اساتید ثبت‌شده متصل کنید."
+
+msgid "Link instructor when switching to Instructor"
+msgstr "برای تغییر نقش، استاد مربوطه را انتخاب کنید"
+
+msgid "Liquid Glass"
+msgstr "حالت شیشه‌ای"
+
+msgid "Live certificate preview"
+msgstr "پیش‌نمایش زنده مدرک"
+
+msgid "Load list"
+msgstr "نمایش فهرست"
+
+msgid "Loading calendar..."
+msgstr "در حال بارگذاری تقویم..."
+
+msgid "Loading..."
+msgstr "در حال بارگذاری..."
+
+msgid "MONTHLY OVERVIEW"
+msgstr "نمای ماهانه"
+
+msgid "Main navigation"
+msgstr "ناوبری اصلی"
+
+msgid "Make every class count."
+msgstr "برنامه همه کلاس‌ها"
+
+msgid "Male"
+msgstr "مرد"
+
+msgid "Manage Grades"
+msgstr "مدیریت نمره‌ها"
+
+msgid "Manage Grades "
+msgstr " Sematec LMS|مدیریت نمرات | سامانه سماتک"
+
+msgid "Manage Grades | Sematec LMS"
+msgstr "Manage Grades | Sematec LMS"
+
+msgid "Manage issued certificate"
+msgstr "مدیریت گواهینامه"
+
+msgid "Manage questions"
+msgstr "مدیریت سؤالات"
+
+msgid "Manager"
+msgstr "مدیر"
+
+msgid "Manager accounts are not linked to instructor profiles."
+msgstr "حساب مدیر نباید به پرونده استاد متصل باشد."
+
+msgid "Managers administer the LMS; instructors only manage their assigned classes."
+msgstr ""
+"مدیر به امکانات مدیریتی دسترسی دارد؛ استاد فقط کلاس‌های اختصاصی خودش را مدیریت "
+"می‌کند."
+
+msgid "Mark this session as"
+msgstr "وضعیت جلسه را تغییر بده به"
+
+msgid "Master"
+msgstr "کارشناسی ارشد"
+
+msgid "Max score"
+msgstr "حداکثر نمره"
+
+msgid "Maximum score"
+msgstr "حداکثر نمره"
+
+msgid "Monday"
+msgstr "دوشنبه"
+
+msgid "Monthly schedule"
+msgstr "برنامه ماهانه"
+
+msgid "My courses"
+msgstr "دوره‌های من"
+
+msgid "My students"
+msgstr "دانشجویان من"
+
+msgid "My teaching overview"
+msgstr "نمای کلی کلاس‌های من"
+
+msgid "Name"
+msgstr "نام"
+
+msgid "National Code"
+msgstr "کد ملی"
+
+msgid "National code"
+msgstr "کد ملی"
+
+msgid "New Category"
+msgstr "دسته‌بندی جدید"
+
+msgid "New Course"
+msgstr "دوره جدید"
+
+msgid "New Instructor"
+msgstr "مدرس جدید"
+
+msgid "New Student"
+msgstr "دانشجوی جدید"
+
+msgid "New course"
+msgstr "دوره جدید"
+
+msgid "New instructor login"
+msgstr "حساب ورود جدید استاد"
+
+msgid "New to Sematec?"
+msgstr "در سماتک تازه‌وارد هستید؟"
+
+msgid "New user account"
+msgstr "ایجاد حساب جدید"
+
+msgid "Next month"
+msgstr "ماه بعد"
+
+msgid "Next page"
+msgstr "صفحه بعد"
+
+msgid "No accounts found"
+msgstr "حساب کاربری پیدا نشد"
+
+msgid "No answered questions yet."
+msgstr "هنوز پاسخی ثبت نشده است."
+
+msgid "No categories yet"
+msgstr "هنوز دسته‌بندی وجود ندارد"
+
+msgid "No categories yet — add the first one."
+msgstr "هنوز دسته‌بندی ثبت نشده است."
+
+msgid "No certificates found"
+msgstr "گواهینامه‌ای یافت نشد"
+
+msgid "No class sessions"
+msgstr "جلسه‌ای وجود ندارد"
+
+msgid ""
+"No class sessions have been generated for this course. Check the course's "
+"weekly schedule or run"
+msgstr ""
+"جلسه‌ای برای این دوره ایجاد نشده است. برنامه هفتگی را بررسی کنید یا این دستور "
+"را اجرا کنید:"
+
+msgid "No completed questionnaires yet."
+msgstr "هنوز پرسش‌نامه تکمیل‌شده‌ای وجود ندارد."
+
+msgid "No courses assigned"
+msgstr "دوره‌ای اختصاص داده نشده است"
+
+msgid "No courses yet"
+msgstr "هنوز دوره‌ای وجود ندارد"
+
+msgid "No courses yet — add the first one."
+msgstr "هنوز دوره‌ای ثبت نشده است."
+
+msgid "No evaluations saved yet."
+msgstr "هنوز ارزیابی ذخیره نشده است."
+
+msgid "No exams found"
+msgstr "آزمونی یافت نشد"
+
+msgid "No exams scheduled for this course."
+msgstr "آزمونی برای این دوره تعریف نشده است."
+
+msgid "No grades recorded yet."
+msgstr "هنوز نمره‌ای ثبت نشده است."
+
+msgid "No instructor schedule is assigned to this course."
+msgstr "هنوز برنامه‌ای برای استاد این دوره ثبت نشده است."
+
+msgid "No instructors found"
+msgstr "مدرسی یافت نشد"
+
+msgid "No instructors yet — add the first one."
+msgstr "هنوز مدرسی ثبت نشده است."
+
+msgid "No matching courses"
+msgstr "دوره‌ای یافت نشد"
+
+msgid "No registered students yet."
+msgstr "هنوز دانشجویی ثبت‌نام نکرده است."
+
+msgid "No registers yet — register the first student."
+msgstr "هنوز ثبت‌نامی وجود ندارد."
+
+msgid "No registers yet."
+msgstr "هنوز ثبت‌نامی وجود ندارد."
+
+msgid "No registrations for this course."
+msgstr "برای این دوره ثبت‌نامی وجود ندارد."
+
+msgid "No responses yet."
+msgstr "هنوز پاسخی وجود ندارد."
+
+msgid "No role"
+msgstr "بدون نقش"
+
+msgid "No scheduled classes yet."
+msgstr "کلاسی برنامه‌ریزی نشده است."
+
+msgid "No students are registered in this course yet."
+msgstr "هنوز دانشجویی در این دوره ثبت‌نام نکرده است."
+
+msgid "No students found"
+msgstr "دانشجویی یافت نشد"
+
+msgid "No students have registered in this course yet."
+msgstr "هنوز دانشجویی در این دوره ثبت‌نام نکرده است."
+
+msgid "No students yet — add the first one."
+msgstr "هنوز دانشجویی ثبت نشده است."
+
+msgid "No survey questions are configured for this audience yet."
+msgstr "هنوز سؤالی برای این گروه تعریف نشده است."
+
+msgid "No survey questions yet. Enter the exact question list here when available."
+msgstr "هنوز سؤالی ثبت نشده است. فهرست دقیق سؤالات را در این قسمت وارد کنید."
+
+msgid "No topics added yet."
+msgstr "هنوز سرفصلی ثبت نشده است."
+
+msgid "No upcoming exams."
+msgstr "آزمون آینده‌ای ثبت نشده است."
+
+msgid "No weekly schedule assigned."
+msgstr "برنامه هفتگی ثبت نشده است."
+
+msgid "Not graded"
+msgstr "نمره ثبت نشده"
+
+msgid "Not required"
+msgstr "نیازی نیست"
+
+msgid "OPERATIONS"
+msgstr "عملیات"
+
+msgid "OVERVIEW"
+msgstr "نمای کلی"
+
+msgid "Officer"
+msgstr "مسئول"
+
+msgid "Offline"
+msgstr "حضوری"
+
+msgid ""
+"One clear view of your courses, instructors, and scheduled, completed, or "
+"cancelled sessions."
+msgstr "نمایش دوره‌ها، مدرس‌ها و وضعیت جلسات"
+
+msgid "Online"
+msgstr "غیرحضوری"
+
+msgid "Online means held elsewhere; this LMS only manages exam information and marks."
+msgstr "آزمون آنلاین در سامانه بیرونی برگزار می‌شود؛ این بخش فقط نتایج را مدیریت می‌کند."
+
+msgid "Only courses the selected student is registered for appear here."
+msgstr "فقط دوره‌های دانشجوی انتخاب‌شده نمایش داده می‌شوند."
+
+msgid "Only instructors teaching the selected course are shown."
+msgstr "فقط مدرسان مرتبط با این دوره نمایش داده می‌شوند."
+
+msgid "Only one choice per student. Unmarked is not the same as absent."
+msgstr "برای هر دانشجو یک وضعیت انتخاب کنید."
+
+msgid "Open questionnaire"
+msgstr "مشاهده پرسش‌نامه"
+
+msgid "Open surveys"
+msgstr "مشاهده نظرسنجی‌ها"
+
+msgid "Optional"
+msgstr "اختیاری"
+
+msgid "Organizational position"
+msgstr "سمت سازمانی"
+
+msgid "Organized learning paths"
+msgstr "مسیرهای آموزشی"
+
+msgid "Other"
+msgstr "سایر"
+
+msgid "PDF document"
+msgstr "فایل PDF"
+
+msgid "PDF مدرک"
+msgstr "PDF مدرک"
+
+msgid "PNG + PDF"
+msgstr "PNG + PDF"
+
+msgid "PNG image"
+msgstr "تصویر PNG"
+
+msgid "PNG تصویر"
+msgstr "تصویر PNG"
+
+msgid "Pagination"
+msgstr "صفحه‌بندی"
+
+msgid "Pass"
+msgstr "قبول"
+
+msgid "Passed"
+msgstr "قبول"
+
+msgid "Passing score"
+msgstr "نمره قبولی"
+
+msgid "Password"
+msgstr "رمز عبور"
+
+msgid "Persian certificate details"
+msgstr "مشخصات فارسی گواهینامه"
+
+msgid "Personal information"
+msgstr "اطلاعات شخصی"
+
+msgid "Ph.D"
+msgstr "دکتری"
+
+msgid "Phone"
+msgstr "تلفن"
+
+msgid "Phone Number"
+msgstr "شماره تلفن"
+
+msgid "Phone number"
+msgstr "شماره تلفن"
+
+msgid "Please correct the highlighted course or weekly schedule fields."
+msgstr "لطفاً اطلاعات دوره و برنامه هفتگی را اصلاح کنید."
+
+msgid "Please fix the highlighted grades. No changes were saved."
+msgstr "نمره‌های مشخص‌شده را اصلاح کنید؛ تغییری ذخیره نشد."
+
+msgid "Please review the highlighted fields and try again."
+msgstr "لطفاً خطاهای فرم را بررسی و اصلاح کنید."
+
+msgid "Position / job title"
+msgstr "سمت سازمانی"
+
+msgid "Poster"
+msgstr "پوستر"
+
+msgid "Practical score (optional)"
+msgstr "نمره عملی (اختیاری)"
+
+msgid "Practical/project score"
+msgstr "نمره عملی / پروژه"
+
+msgid "Preparing live preview…"
+msgstr "در حال آماده‌سازی پیش‌نمایش..."
+
+msgid "Present"
+msgstr "حاضر"
+
+msgid "Previous month"
+msgstr "ماه قبل"
+
+msgid "Previous page"
+msgstr "صفحه قبل"
+
+msgid "Price"
+msgstr "هزینه"
+
+msgid "Price is too large."
+msgstr "مبلغ واردشده بیش از حد مجاز است."
+
+msgid "Profile"
+msgstr "پروفایل"
+
+msgid "Profile Image"
+msgstr "تصویر پروفایل"
+
+msgid "Profile img"
+msgstr "تصویر پروفایل"
+
+msgid "Protected account"
+msgstr "حساب محافظت‌شده"
+
+msgid "Question"
+msgstr "سؤال"
+
+msgid "Question bank"
+msgstr "بانک سؤال"
+
+msgid "Question wording"
+msgstr "متن سؤال"
+
+msgid "Question-by-question evaluation"
+msgstr "ارزیابی به تفکیک سؤال"
+
+msgid "Questionnaire"
+msgstr "پرسش‌نامه"
+
+msgid "Questions are configurable. No default questions were invented."
+msgstr "سؤالات قابل تعریف‌اند و هیچ سؤال پیش‌فرضی اضافه نشده است."
+
+msgid "Quick access"
+msgstr "دسترسی سریع"
+
+msgid "Rate each item from 1 (lowest) to 5 (highest)."
+msgstr "هر مورد را از ۱ (کمترین) تا ۵ (بیشترین) امتیاز دهید."
+
+msgid "Ratings"
+msgstr "تعداد امتیازها"
+
+msgid "Recognition, beautifully documented."
+msgstr "گواهینامه‌های صادرشده"
+
+msgid "Recorded"
+msgstr "تاریخ ثبت"
+
+msgid "Recorded grades"
+msgstr "نمرات ثبت‌شده"
+
+msgid "Refresher due"
+msgstr "زمان بازآموزی"
+
+msgid "Refresher interval"
+msgstr "فاصله بازآموزی"
+
+msgid "Refresher interval (months)"
+msgstr "فاصله بازآموزی (ماه)"
+
+msgid "Refresher training due"
+msgstr "نیازمند بازآموزی"
+
+msgid "Register"
+msgstr "ثبت‌نام"
+
+msgid "Register Date"
+msgstr "تاریخ ثبت‌نام"
+
+msgid "Register Directory"
+msgstr "فهرست ثبت‌نام‌ها"
+
+msgid "Register Student"
+msgstr "ثبت‌نام دانشجو"
+
+msgid "Register a student"
+msgstr "ثبت‌نام دانشجو"
+
+msgid "Register status"
+msgstr "وضعیت ثبت‌نام"
+
+msgid "Registered"
+msgstr "ثبت‌نام‌شده"
+
+msgid "Registered Student"
+msgstr "دانشجوی ثبت‌نام‌شده"
+
+msgid "Registered course"
+msgstr "دوره ثبت‌نام‌شده"
+
+msgid "Registered students"
+msgstr "دانشجویان ثبت‌نام‌شده"
+
+msgid "Registers"
+msgstr "ثبت‌نام‌ها"
+
+msgid "Registers "
+msgstr " Sematec LMS|ثبت‌نام‌ها | سامانه سماتک"
+
+msgid "Registers | Sematec LMS"
+msgstr "Registers | Sematec LMS"
+
+msgid "Registration"
+msgstr "ثبت‌نام"
+
+msgid "Registration date"
+msgstr "تاریخ ثبت‌نام"
+
+msgid "Registration status"
+msgstr "وضعیت ثبت‌نام"
+
+msgid "Remote"
+msgstr "غیرحضوری"
+
+msgid "Remove topic"
+msgstr "حذف سرفصل"
+
+msgid "Reset"
+msgstr "بازنشانی"
+
+msgid "Respondent"
+msgstr "پاسخ‌دهنده"
+
+msgid "Result"
+msgstr "نتیجه"
+
+msgid "Role"
+msgstr "نقش"
+
+msgid "Room"
+msgstr "کلاس"
+
+msgid "SELECTED DAY"
+msgstr "روز انتخاب‌شده"
+
+msgid "SESSION ENDED"
+msgstr "پایان نشست"
+
+msgid "Saturday"
+msgstr "شنبه"
+
+msgid "Save"
+msgstr "ذخیره"
+
+msgid "Save Exam"
+msgstr "ذخیره آزمون"
+
+msgid "Save Grades"
+msgstr "ذخیره نمره‌ها"
+
+msgid "Save attendance"
+msgstr "ذخیره حضور و غیاب"
+
+msgid "Save changes"
+msgstr "ذخیره تغییرات"
+
+msgid "Save evaluation"
+msgstr "ذخیره ارزیابی"
+
+msgid "Save the certificate first to enable PDF and PNG downloads in both languages."
+msgstr "ابتدا مدرک را ذخیره کنید تا دانلود PDF و PNG فعال شود."
+
+msgid "Saved responses"
+msgstr "پاسخ‌های ذخیره‌شده"
+
+msgid "Saved: Failed"
+msgstr "ثبت‌شده: مردود"
+
+msgid "Saved: Passed"
+msgstr "ثبت‌شده: قبول"
+
+msgid "Scheduled"
+msgstr "برنامه‌ریزی‌شده"
+
+msgid "Scheduled instructors"
+msgstr "مدرسان برنامه‌ریزی‌شده"
+
+msgid "Search"
+msgstr "جست‌وجو"
+
+msgid "Search by name or city..."
+msgstr "جست‌وجو با نام یا شهر..."
+
+msgid "Search by name or serial..."
+msgstr "جست‌وجو با نام یا سریال..."
+
+msgid "Search courses"
+msgstr "جست‌وجوی دوره‌ها"
+
+msgid "Search courses or categories..."
+msgstr "جست‌وجوی دوره یا دسته‌بندی..."
+
+msgid "Search courses or instructors..."
+msgstr "جست‌وجوی دوره یا مدرس..."
+
+msgid "Search exams"
+msgstr "جست‌وجوی آزمون‌ها"
+
+msgid "Search instructors"
+msgstr "جست‌وجوی مدرسان"
+
+msgid "Search instructors by name or city..."
+msgstr "جست‌وجوی مدرس با نام یا شهر..."
+
+msgid "Search registers"
+msgstr "جست‌وجوی ثبت‌نام‌ها"
+
+msgid "Search student or course..."
+msgstr "جست‌وجوی دانشجو یا دوره..."
+
+msgid "Search student, course or serial"
+msgstr "جست‌وجوی دانشجو، دوره یا سریال"
+
+msgid "Search students"
+msgstr "جست‌وجوی دانشجویان"
+
+msgid "Seat availability"
+msgstr "ظرفیت باقی‌مانده"
+
+msgid "Select a class date"
+msgstr "انتخاب تاریخ کلاس"
+
+msgid "Select a course"
+msgstr "انتخاب دوره"
+
+msgid ""
+"Select a course and one of its actual class sessions, then mark its registered "
+"students."
+msgstr "دوره و جلسه را انتخاب کنید و حضور دانشجویان را ثبت کنید."
+
+msgid "Select a course first"
+msgstr "ابتدا دوره را انتخاب کنید"
+
+msgid "Select a registered course"
+msgstr "انتخاب دوره ثبت‌نام‌شده"
+
+msgid "Select a student"
+msgstr "انتخاب دانشجو"
+
+msgid "Select a student, course, and instructor."
+msgstr "دانشجو، دوره و مدرس را انتخاب کنید."
+
+msgid "Select an registered course"
+msgstr "انتخاب دوره ثبت‌نام‌شده"
+
+msgid "Serial number"
+msgstr "شماره سریال"
+
+msgid "Session CSV"
+msgstr "CSV جلسه"
+
+msgid "Sessions this month"
+msgstr "جلسات این ماه"
+
+msgid "Set 0 for no refresher requirement. For three years, enter 36."
+msgstr "برای دوره بدون بازآموزی، صفر و برای سه سال، ۳۶ وارد کنید."
+
+msgid "Set up your space in a few simple steps."
+msgstr "در چند مرحله ساده حساب خود را ایجاد کنید."
+
+msgid "Setup completed"
+msgstr "راه‌اندازی اولیه انجام شده است"
+
+msgid "Show password"
+msgstr "نمایش رمز عبور"
+
+msgid "Showing the first 200 records. Narrow the list with search."
+msgstr "۲۰۰ مورد اول نمایش داده می‌شود. برای محدود کردن جست‌وجو کنید."
+
+msgid "Sign in"
+msgstr "ورود"
+
+msgid "Sign in again"
+msgstr "ورود مجدد"
+
+msgid "Sign in to your account"
+msgstr "وارد حساب کاربری شوید"
+
+msgid "Sign out"
+msgstr "خروج از حساب"
+
+msgid "Signed in as"
+msgstr "واردشده با حساب"
+
+msgid "Signed out"
+msgstr "خارج‌شده از حساب"
+
+msgid "Skills after training"
+msgstr "مهارت‌های پس از آموزش"
+
+msgid "Skills before training"
+msgstr "مهارت‌های پیش از آموزش"
+
+msgid "Specialist"
+msgstr "کارشناس"
+
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgid "Start date"
+msgstr "تاریخ شروع"
+
+msgid "Start time"
+msgstr "ساعت شروع"
+
+msgid "Status"
+msgstr "وضعیت"
+
+msgid "Student"
+msgstr "دانشجو"
+
+msgid "Student #"
+msgstr "دانشجو شماره"
+
+msgid "Student Directory"
+msgstr "فهرست دانشجویان"
+
+msgid "Student Profile"
+msgstr "پروفایل دانشجو"
+
+msgid "Student attendance"
+msgstr "حضور و غیاب دانشجویان"
+
+msgid "Student feedback"
+msgstr "نظرات دانشجویان"
+
+msgid "Student first name"
+msgstr "نام دانشجو"
+
+msgid "Student name in Persian"
+msgstr "نام فارسی دانشجو"
+
+msgid "Student questionnaire"
+msgstr "پرسش‌نامه دانشجو"
+
+msgid "Student registration"
+msgstr "ثبت‌نام دانشجو"
+
+msgid "Students"
+msgstr "دانشجویان"
+
+msgid "Students | Sematec LMS"
+msgstr "دانشجویان | سامانه سماتک"
+
+msgid "Sunday"
+msgstr "یکشنبه"
+
+msgid "Survey evaluation"
+msgstr "ارزیابی نظرسنجی"
+
+msgid "Surveys"
+msgstr "نظرسنجی‌ها"
+
+msgid "Team accounts"
+msgstr "حساب‌های کاربری"
+
+msgid "Technical associate"
+msgstr "کاردان"
+
+msgid "Technician"
+msgstr "تکنسین"
+
+msgid "The account was created successfully."
+msgstr "حساب کاربری با موفقیت ایجاد شد."
+
+msgid ""
+"The final score determines pass/fail. Written and practical scores are optional"
+" and are not automatically weighted. Dropped registrations are read-only."
+msgstr ""
+"نمره نهایی مبنای قبولی یا مردودی است. نمره کتبی و عملی اختیاری است و خودکار "
+"وزن‌دهی نمی‌شود. ثبت‌نام‌های انصرافی فقط قابل مشاهده‌اند."
+
+msgid "Theme"
+msgstr "تم"
+
+msgid ""
+"These courses have been saved, but need at least one class day and time before "
+"they can appear on the calendar."
+msgstr "برای نمایش این دوره‌ها در تقویم، روز و ساعت برگزاری تعریف کنید."
+
+msgid "This account does not have permission to access this page."
+msgstr "این حساب اجازه دسترسی به این صفحه را ندارد."
+
+msgid "This classroom is occupied at that time."
+msgstr "این کلاس در زمان انتخاب‌شده اشغال است."
+
+msgid "This instructor has another class at that time."
+msgstr "این استاد در ساعت انتخاب‌شده کلاس دیگری دارد."
+
+msgid "This question has no saved answers and will be deleted."
+msgstr "این سؤال پاسخی ندارد و به‌صورت دائمی حذف خواهد شد."
+
+msgid "This student is not registered in a course yet."
+msgstr "این دانشجو هنوز در دوره‌ای ثبت‌نام نکرده است."
+
+msgid "Thursday"
+msgstr "پنجشنبه"
+
+msgid "Title"
+msgstr "عنوان"
+
+msgid "Today"
+msgstr "امروز"
+
+msgid "Today at Sematec"
+msgstr "امروز در سماتک"
+
+msgid "Toggle Liquid Glass"
+msgstr "تغییر حالت شیشه‌ای"
+
+msgid "Toggle dark mode"
+msgstr "تغییر تم روشن و تاریک"
+
+msgid "Toggle menu"
+msgstr "نمایش منو"
+
+msgid "Total Courses"
+msgstr "تعداد دوره‌ها"
+
+msgid "Total Instructors"
+msgstr "تعداد مدرسان"
+
+msgid "Total Students"
+msgstr "تعداد دانشجویان"
+
+msgid "Total exams"
+msgstr "تعداد آزمون‌ها"
+
+msgid "Total registers"
+msgstr "تعداد ثبت‌نام‌ها"
+
+msgid "Track every class. Keep every record."
+msgstr "مدیریت دقیق جلسات"
+
+msgid "Try another search or add a student."
+msgstr "دوباره جست‌وجو کنید یا دانشجویی اضافه کنید."
+
+msgid "Tuesday"
+msgstr "سه‌شنبه"
+
+msgid "Two classes cannot use the same room at the same time."
+msgstr "دو دوره نمی‌توانند هم‌زمان در یک کلاس برگزار شوند."
+
+msgid "Type"
+msgstr "نوع"
+
+msgid "Unique serial number"
+msgstr "شماره سریال یکتا"
+
+msgid "Unmarked"
+msgstr "ثبت‌نشده"
+
+msgid "Upcoming / today"
+msgstr "آزمون‌های پیش رو"
+
+msgid "Upcoming class sessions"
+msgstr "جلسات آینده"
+
+msgid "Upcoming classes"
+msgstr "کلاس‌های آینده"
+
+msgid "Upcoming exams"
+msgstr "آزمون‌های آینده"
+
+msgid "Updated"
+msgstr "به‌روزرسانی"
+
+msgid "User Management"
+msgstr "مدیریت کاربران"
+
+msgid "Username"
+msgstr "نام کاربری"
+
+msgid "View"
+msgstr "مشاهده"
+
+msgid "View all courses"
+msgstr "مشاهده همه دوره‌ها"
+
+msgid "View all instructors"
+msgstr "مشاهده همه مدرسان"
+
+msgid "View all students"
+msgstr "مشاهده همه دانشجویان"
+
+msgid "View categories"
+msgstr "مشاهده دسته‌بندی‌ها"
+
+msgid "View details"
+msgstr "مشاهده جزئیات"
+
+msgid "View profile"
+msgstr "مشاهده پروفایل"
+
+msgid "View registrations and their current status"
+msgstr "ثبت‌نام‌ها و وضعیت آن‌ها"
+
+msgid "WELCOME BACK"
+msgstr "خوش برگشتی"
+
+msgid "Wednesday"
+msgstr "چهارشنبه"
+
+msgid "Weekday"
+msgstr "روز هفته"
+
+msgid "Weekly class schedule"
+msgstr "برنامه هفتگی کلاس"
+
+msgid "Weekly class schedules"
+msgstr "برنامه‌های هفتگی کلاس"
+
+msgid "Weekly class slots"
+msgstr "زمان‌های هفتگی"
+
+msgid "Weekly teaching schedule"
+msgstr "برنامه هفتگی تدریس"
+
+msgid "Welcome ..."
+msgstr "خوش آمدید"
+
+msgid ""
+"Without translations, the original student and course names are used on the "
+"Persian certificate."
+msgstr "اگر عنوان فارسی وارد نشود، نام اصلی نمایش داده می‌شود."
+
+msgid "Work place"
+msgstr "محل کار"
+
+msgid "Worker"
+msgstr "کارگر"
+
+msgid "Workplace"
+msgstr "محل کار"
+
+msgid "Written score"
+msgstr "نمره کتبی"
+
+msgid "Written score (optional)"
+msgstr "نمره کتبی (اختیاری)"
+
+msgid "Yes, Delete"
+msgstr "بله، حذف شود"
+
+msgid "You cannot change your own role."
+msgstr "شما نمی‌توانید نقش حساب خودتان را تغییر دهید."
+
+msgid "You have signed out"
+msgstr "با موفقیت خارج شدید"
+
+msgid "Your account does not have permission to view this page."
+msgstr "حساب شما اجازه مشاهده این صفحه را ندارد."
+
+msgid "Your certificate will appear here"
+msgstr "مدرک شما اینجا نمایش داده می‌شود"
+
+msgid "Your class sessions and registered students will appear here."
+msgstr "جلسات و دانشجویان ثبت‌نام‌شده اینجا نمایش داده می‌شوند."
+
+msgid "Your session has ended safely. You can sign in whenever you are ready."
+msgstr "نشست شما با امنیت پایان یافت. هر زمان بخواهید می‌توانید دوباره وارد شوید."
+
+msgid "Your username"
+msgstr "نام کاربری شما"
+
+msgid "months after completion"
+msgstr "ماه پس از اتمام دوره"
+
+msgid "python manage.py generate_class_sessions"
+msgstr "python manage.py generate_class_sessions"
+
+msgid "ratings"
+msgstr "امتیاز"
+
+msgid "when all active students are marked"
+msgstr "هنگامی که تمام دانشجویان فعال مشخص شده‌اند"
+

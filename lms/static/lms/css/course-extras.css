@@ -1,0 +1,20 @@
+.price-field-shell {position:relative;}
+.price-field-shell .js-price-input {width:100%;padding-inline-end:88px;direction:ltr;text-align:start;font-variant-numeric:tabular-nums;}
+.price-unit {position:absolute;inset-inline-end:12px;top:50%;transform:translateY(-50%);font-size:.8rem;color:var(--slate);pointer-events:none;white-space:nowrap;}
+.schedule-slot-fields {grid-template-columns:repeat(5,minmax(0,1fr));}
+.syllabus-editor .schedule-editor-header {align-items:center;}
+.course-topics {display:grid;gap:10px;}
+.topic-row {display:grid;grid-template-columns:34px minmax(0,1fr) 38px;align-items:center;gap:10px;padding:9px;border:1px solid var(--border);border-radius:12px;background:var(--surface);animation:topicIn .26s ease both;}
+.topic-number {height:30px;min-width:30px;display:grid;place-items:center;background:var(--indigo-soft);color:var(--indigo);border-radius:9px;font-weight:700;}
+.topic-input {min-width:0;}.topic-input input[type=text] {width:100%;}
+.topic-row .topic-delete {display:grid;place-items:center;min-height:32px;color:var(--coral);cursor:pointer;position:relative;margin:0;}
+.topic-delete input {position:absolute;width:100%;height:100%;opacity:0;cursor:pointer;}
+.topic-row.is-deleted {opacity:.4;background:var(--surface-2);text-decoration:line-through;}
+.syllabus-list {display:grid;gap:12px;padding-inline-start:25px;line-height:1.85;color:var(--ink);}
+html[lang="fa"] .schedule-editor,html[lang="fa"] .schedule-editor *,html[lang="fa"] .syllabus-editor * {font-family:Vazirmatn,Tahoma,sans-serif;letter-spacing:normal;line-height:1.85;}
+html[lang="fa"] .schedule-editor h3 {font-weight:700;font-size:1.02rem;}
+@keyframes topicIn {from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1100px){.schedule-slot-fields {grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(max-width:700px){.schedule-slot-fields {grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:480px){.schedule-slot-fields {grid-template-columns:1fr;}}
+@media(prefers-reduced-motion:reduce){.topic-row {animation:none;}}

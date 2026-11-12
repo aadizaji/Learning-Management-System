@@ -1,0 +1,12 @@
+{% load i18n %}
+<article class="mg-course-card">
+    {% if course.poster %}<img class="mg-course-cover" src="{{ course.poster.url }}" alt="{{ course.title }} poster" loading="lazy">{% else %}<div class="mg-course-cover"><i class="bi bi-journal-code"></i></div>{% endif %}
+    <div class="mg-course-content"><span class="mg-tag">{{ course.course_category.name }}</span><h3 style="margin-top:12px">{{ course.title }}</h3>
+        <div class="mg-course-meta"><i class="bi bi-calendar3"></i><time class="js-localized-date" datetime="{{ course.start_date|date:'Y-m-d' }}">{{ course.start_date|date:'M j, Y' }}</time> – <time class="js-localized-date" datetime="{{ course.end_date|date:'Y-m-d' }}">{{ course.end_date|date:'M j, Y' }}</time></div>
+        <div class="mg-course-meta"><i class="bi bi-clock"></i>{{ course.duration }} hours · {{ course.get_course_level_display }} · {{ course.get_delivery_mode_display }}</div>
+        <div class="mg-course-meta"><i class="bi bi-cash-stack"></i>{{ course.formatted_price }}</div>
+        <div class="mg-course-meta"><i class="bi bi-person-video3"></i>{% for instructor in course.instructors.all %}{{ instructor }}{% if not forloop.last %}, {% endif %}{% empty %}No instructor yet{% endfor %}</div>
+        <div class="mg-course-bottom">{% include 'lms/_capacity_ring.html' %}</div>
+        <div class="mg-card-actions"><a class="mg-button mg-button--sm" href="{% url 'course_detail' course.pk %}"><i class="bi bi-eye"></i> {% trans 'View' %}</a>{% if can_manage %}<a class="mg-button mg-button--sm mg-button--outline" href="{% url 'edit_course' course.pk %}"><i class="bi bi-pencil"></i> {% trans 'Edit' %}</a>{% endif %}{% if can_manage %}<a class="mg-button mg-button--sm mg-button--outline" href="{% url 'delete_course' course.pk %}"><i class="bi bi-trash"></i></a>{% endif %}</div>
+    </div>
+</article>

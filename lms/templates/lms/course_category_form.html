@@ -1,0 +1,57 @@
+{% extends '_base.html' %}
+{% load i18n %}
+
+{% block page_title %}
+    {{ page_title }} | Sematec LMS
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2>{% trans page_title %}</h2>
+    
+</div>
+
+<div class="form-card">
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="row g-4">
+
+                    <!-- Name -->
+                    <div class="col-md-6">
+                        <label for="{{ form.name.id_for_label }}" class="form-label">
+                            {% trans 'Category Name' %}
+                        </label>
+
+                        {{ form.name }}
+
+                        {% if form.name.errors %}
+                            <div class="field-error">
+                                {{ form.name.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <!-- Buttons -->
+                    <div class="col-12 form-actions">
+
+                        <button type="submit" class="btn-pill">
+                            <i class="bi bi-check2"></i> {% trans 'Save' %}
+                        </button>
+
+                        <a href="{% url 'category_list' %}" class="btn-pill secondary">
+                            {% trans 'Cancel' %}
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+</div>
+
+{% endblock %}

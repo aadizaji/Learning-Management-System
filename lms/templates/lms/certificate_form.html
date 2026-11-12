@@ -1,0 +1,116 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% load static %}
+{% block page_title %}{% if is_edit %}Edit Certificate{% else %}Issue Certificate{% endif %} | Sematec LMS{% endblock %}
+{% block page_heading %}{% if is_edit %}Edit Certificate{% else %}Issue Certificate{% endif %}{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/certificates.css' %}"><link rel="stylesheet" href="{% static 'lms/css/date-fields.css' %}">{% endblock %}
+
+{% block content %}
+<section class="cert-page">
+  <div class="cert-head">
+    <div>
+      <div class="cert-eyebrow"><i class="bi bi-patch-check-fill"></i> {% trans 'CERTIFICATE STUDIO' %}</div>
+      
+      
+    </div>
+    <a class="cert-button cert-ghost" href="{% url 'certificate_list' %}"><i class="bi bi-arrow-left"></i> {% trans 'All certificates' %}</a>
+  </div>
+
+  {% if saved %}
+  <div class="cert-alert cert-alert-success"><i class="bi bi-check-circle-fill"></i> {% trans 'Certificate saved. Both language versions can now be downloaded below.' %}</div>
+  {% endif %}
+  <div class="cert-editor">
+    <section class="cert-card cert-entry" aria-label="{% trans 'Certificate details' %}">
+      <div class="cert-section-header"><span class="cert-step">01</span><div><h3>{% trans 'Certificate details' %}</h3></div></div>
+      <form method="post" id="certificate-form"
+            data-preview-url="{% url 'certificate_preview' %}"
+            data-courses-url="{% url 'certificate_courses' %}"
+            autocomplete="off">
+        {% csrf_token %}
+        {% if certificate %}<input type="hidden" name="certificate_id" value="{{ certificate.pk }}">{% endif %}
+        {% if form.non_field_errors %}<div class="cert-alert cert-alert-error">{{ form.non_field_errors }}</div>{% endif %}
+        <div class="cert-field">
+          <label for="{{ form.student.id_for_label }}">{% trans 'Student' %} <span>*</span></label>
+          {{ form.student }}
+          {% for error in form.student.errors %}<small class="cert-error">{{ error }}</small>{% endfor %}
+        </div>
+        <div class="cert-field">
+          <label for="{{ form.register.id_for_label }}">{% trans 'Registered course' %} <span>*</span></label>
+          {{ form.register }}
+          {% for error in form.register.errors %}<small class="cert-error">{{ error }}</small>{% endfor %}
+          <small class="cert-hint" id="course-chooser-hint">{% trans 'Only courses the selected student is registered for appear here.' %}</small>
+        </div>
+        <div class="cert-grid-two">
+          <div class="cert-field">
+            <label for="{{ form.grade.id_for_label }}">{% trans 'Grade / 100' %} <span>*</span></label>
+            {{ form.grade }}
+            {% for error in form.grade.errors %}<small class="cert-error">{{ error }}</small>{% endfor %}
+          </div>
+          <div class="cert-field">
+            <label for="{{ form.issue_date.id_for_label }}">{% trans 'Issue date' %} <span>*</span></label>
+            {{ form.issue_date }}
+            {% for error in form.issue_date.errors %}<small class="cert-error">{{ error }}</small>{% endfor %}
+          </div>
+        </div>
+        <div class="cert-field">
+          <label for="{{ form.serial_number.id_for_label }}">{% trans 'Unique serial number' %} <span>*</span></label>
+          {{ form.serial_number }}
+          {% for error in form.serial_number.errors %}<small class="cert-error">{{ error }}</small>{% endfor %}
+          <small class="cert-hint">{% trans 'Example: SEM-2026-001. The number is checked for uniqueness before saving.' %}</small>
+        </div>
+        <div class="cert-locale-title"><i class="bi bi-translate"></i><strong>{% trans 'Persian certificate details' %}</strong><span>{% trans 'Optional' %}</span></div>
+        <div class="cert-field">
+          <label for="{{ form.student_name_fa.id_for_label }}">{% trans 'Student name in Persian' %}</label>
+          {{ form.student_name_fa }}
+          {% for error in form.student_name_fa.errors %}<small class="cert-error">{{ error }}</small>{% endfor %}
+        </div>
+        <div class="cert-field">
+          <label for="{{ form.course_title_fa.id_for_label }}">{% trans 'Course title in Persian' %}</label>
+          {{ form.course_title_fa }}
+          {% for error in form.course_title_fa.errors %}<small class="cert-error">{{ error }}</small>{% endfor %}
+          <small class="cert-hint">{% trans 'Without translations, the original student and course names are used on the Persian certificate.' %}</small>
+        </div>
+        <div class="cert-form-footer">
+          <button type="submit" class="cert-button cert-primary"><i class="bi bi-floppy-fill"></i> {% if is_edit %}Save changes{% else %}Issue & save certificate{% endif %}</button>
+          <p>{% trans 'Changes shown in the live preview are not stored until you save.' %}</p>
+        </div>
+      </form>
+    </section>
+
+    <section class="cert-card cert-preview-panel" aria-label="{% trans 'Live certificate preview' %}">
+      <div class="cert-preview-toolbar">
+        <div><div class="cert-section-header"><span class="cert-step">02</span><div><h3>{% trans 'Live certificate preview' %}</h3></div></div></div>
+        <div class="cert-language-buttons" role="group" aria-label="{% trans 'Certificate preview language' %}">
+          <button type="button" class="cert-lang active" data-language="en" aria-pressed="true">{% trans 'English' %}</button>
+          <button type="button" class="cert-lang" data-language="fa" aria-pressed="false">فارسی</button>
+        </div>
+      </div>
+      <div class="cert-preview-canvas" id="certificate-preview-canvas">
+        <div class="cert-preview-empty" id="certificate-preview-empty"><i class="bi bi-award"></i><strong>{% trans 'Your certificate will appear here' %}</strong><span>{% trans 'A draft certificate appears immediately; fill in the fields to update it.' %}</span></div>
+        <img id="certificate-preview-image" alt="Live preview of Sematec certificate" hidden>
+      </div>
+      <p class="cert-preview-message" id="certificate-preview-message" role="status">{% trans 'Preparing live preview…' %}</p>
+      {% if certificate %}
+      <div class="cert-downloads">
+        <div class="cert-downloads-title"><i class="bi bi-download"></i> {% trans 'Download saved certificate' %}</div>
+        <div class="cert-download-columns">
+          <div><strong>{% trans 'English' %}</strong>
+            <a href="{% url 'certificate_download' certificate.pk 'en' 'png' %}" class="cert-button cert-ghost"><i class="bi bi-image"></i> {% trans 'PNG image' %}</a>
+            <a href="{% url 'certificate_download' certificate.pk 'en' 'pdf' %}" class="cert-button cert-ghost"><i class="bi bi-file-earmark-pdf"></i> {% trans 'PDF document' %}</a>
+          </div>
+          <div><strong>فارسی</strong>
+            <a href="{% url 'certificate_download' certificate.pk 'fa' 'png' %}" class="cert-button cert-ghost"><i class="bi bi-image"></i> {% trans 'PNG تصویر' %}</a>
+            <a href="{% url 'certificate_download' certificate.pk 'fa' 'pdf' %}" class="cert-button cert-ghost"><i class="bi bi-file-earmark-pdf"></i> {% trans 'PDF مدرک' %}</a>
+          </div>
+        </div>
+        <small>{% trans 'Downloads reflect the last saved version. Save edits before downloading updated files.' %}</small>
+      </div>
+      {% else %}
+      <div class="cert-notice"><i class="bi bi-info-circle"></i> {% trans 'Save the certificate first to enable PDF and PNG downloads in both languages.' %}</div>
+      {% endif %}
+    </section>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'lms/js/date-fields.js' %}" defer></script><script src="{% static 'lms/js/certificates.js' %}" defer></script>{% endblock %}

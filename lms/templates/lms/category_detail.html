@@ -1,0 +1,11 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% block page_title %}{{ category.name }} | Sematec LMS{% endblock %}
+{% block page_heading %}{% trans 'Category' %}{% endblock %}
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'courses' %}?category={{ category.pk }}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+
+<a class="mg-back" href="{% url 'category_list' %}"><i class="bi bi-arrow-left"></i> {% trans 'All categories' %}</a>
+<div class="mg-toolbar"><div class="mg-heading"><div class="mg-heading-icon"><i class="bi bi-tags"></i></div><div><h2>{{ category.name }}</h2><div class="mg-muted">{% trans 'Courses associated with this category' %}</div></div></div><div class="mg-tools">{% if can_manage %}<a class="mg-button mg-button--outline" href="{% url 'edit_course_category' category.pk %}"><i class="bi bi-pencil"></i> {% trans 'Edit' %}</a>{% endif %}{% if can_manage %}<a class="mg-button" href="{% url 'add_course' %}"><i class="bi bi-plus"></i> {% trans 'Add Course' %}</a>{% endif %}</div></div>
+<div class="mg-grid">{% for course in courses %}{% include 'lms/_course_card.html' %}{% empty %}<div class="mg-empty"><h3>{% trans 'No courses yet' %}</h3><p class="mg-muted">{% trans 'Add a course to this category.' %}</p></div>{% endfor %}</div>
+{% endblock %}

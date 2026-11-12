@@ -1,0 +1,13 @@
+{% extends '_base.html' %}{% load i18n static %}
+{% block page_title %}{% trans 'Course evaluation' %} | Sematec LMS{% endblock %}
+{% block page_heading %}{% trans 'Course evaluation' %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/surveys.css' %}">{% endblock %}
+{% block content %}
+<a class="mg-back" href="{% url 'survey_course' course.pk %}"><i class="bi bi-arrow-left"></i> {% trans 'Course Surveys' %}</a>
+<div class="mg-panel survey-form"><span class="mg-tag">{% if audience == 'I' %}{% trans 'Instructor' %}{% else %}{% trans 'Student' %}{% endif %}</span><h2>{{ identity }}</h2><p class="mg-muted">{{ course.title }} · {% trans 'Rate each item from 1 (lowest) to 5 (highest).' %}</p>
+{% if error %}<div class="mg-alert mg-alert--error" role="alert">{{ error }}</div>{% endif %}
+{% if questions %}<form method="post">{% csrf_token %}{% for row in questions %}
+<fieldset class="survey-rating-item"><legend><span>{{ forloop.counter }}.</span> {{ row.question.title }}</legend><div class="survey-radios">{% for choice in '12345' %}<label class="survey-radio"><input type="radio" name="question_{{ row.question.pk }}" value="{{ choice }}" {% if row.rating == choice %}checked{% endif %} required><span><i class="bi bi-star-fill"></i>{{ choice }}</span></label>{% endfor %}</div></fieldset>
+{% endfor %}<div class="mg-tools"><button class="mg-button" type="submit"><i class="bi bi-check2-circle"></i> {% trans 'Save evaluation' %}</button><a href="{% url 'survey_course' course.pk %}" class="mg-button mg-button--outline">{% trans 'Cancel' %}</a></div></form>
+{% else %}<div class="mg-alert">{% trans 'No survey questions are configured for this audience yet.' %} {% if is_manager %}<a href="{% url 'survey_questions' %}">{% trans 'Manage questions' %}</a>{% endif %}</div>{% endif %}</div>
+{% endblock %}

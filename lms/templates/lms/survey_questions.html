@@ -1,0 +1,39 @@
+{% extends '_base.html' %}{% load i18n static %}
+{% block page_title %}{% trans 'Survey Questions' %} | Sematec LMS{% endblock %}
+{% block page_heading %}{% trans 'Survey Questions' %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'lms/css/surveys.css' %}">{% endblock %}
+{% block content %}
+<div class="report-toolbar"><a class="mg-button mg-button--outline" href="{% url 'report_csv' 'questions' %}"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+<a class="mg-back" href="{% url 'survey_dashboard' %}"><i class="bi bi-arrow-left"></i> {% trans 'Surveys' %}</a>
+<div class="survey-two-col">
+  <section class="mg-panel" id="question-editor">
+    <h2>{% if editing_question %}{% trans 'Edit question' %}{% else %}{% trans 'Add questionnaire question' %}{% endif %}</h2>
+    <form method="post" {% if editing_question %}action="{% url 'survey_question_edit' editing_question.pk %}"{% else %}action="{% url 'survey_questions' %}"{% endif %}>
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="survey-form-row"><label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</div>
+      {% endfor %}
+      {% if form.non_field_errors %}<div class="mg-field-error">{{ form.non_field_errors }}</div>{% endif %}
+      <div class="mg-tools">
+        <button class="mg-button" type="submit"><i class="bi bi-{% if editing_question %}check-lg{% else %}plus-lg{% endif %}"></i> {% if editing_question %}{% trans 'Save changes' %}{% else %}{% trans 'Add question' %}{% endif %}</button>
+        {% if editing_question %}<a class="mg-button mg-button--outline" href="{% url 'survey_questions' %}">{% trans 'Cancel' %}</a>{% endif %}
+      </div>
+    </form>
+  </section>
+  <section class="mg-panel">
+    <h2>{% trans 'Question bank' %}</h2>
+    <div class="survey-question-list">
+      {% for question in questions %}
+      <article class="survey-question-item">
+        <div class="survey-question-info"><span class="mg-tag">{{ question.get_audience_display }}</span> <small>#{{ question.position }}</small><p>{{ question.title }}</p></div>
+        <div class="mg-tools survey-question-actions">
+          <a class="mg-button mg-button--sm mg-button--outline" href="{% url 'survey_question_edit' question.pk %}" aria-label="{% trans 'Edit question' %}: {{ question.title }}"><i class="bi bi-pencil"></i> {% trans 'Edit' %}</a>
+          <form method="post" action="{% url 'survey_questions' %}">{% csrf_token %}<input type="hidden" name="action" value="toggle"><input type="hidden" name="question" value="{{ question.pk }}"><button class="mg-button mg-button--sm mg-button--outline" type="submit">{% if question.active %}{% trans 'Deactivate' %}{% else %}{% trans 'Activate' %}{% endif %}</button></form>
+          <a class="mg-button mg-button--sm mg-button--danger" href="{% url 'survey_question_delete' question.pk %}" aria-label="{% trans 'Delete survey question' %}: {{ question.title }}"><i class="bi bi-trash3"></i> {% trans 'Delete' %}</a>
+        </div>
+      </article>
+      {% empty %}<p class="mg-muted">{% trans 'No survey questions yet. Enter the exact question list here when available.' %}</p>{% endfor %}
+    </div>
+  </section>
+</div>
+{% endblock %}

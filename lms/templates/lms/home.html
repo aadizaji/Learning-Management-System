@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% block page_title %}{% trans 'Dashboard | Sematec LMS' %}{% endblock %}
+{% block page_heading %}{% trans 'Dashboard' %}{% endblock %}
+{% block content %}
+<div class="dashboard-intro-row"><div class="dashboard-intro"><span class="mg-tag"><i class="bi bi-house-door"></i> Sematec LMS</span><h2>{% if is_instructor_role %}{% trans 'My teaching overview' %}{% else %}{% trans 'Academy overview' %}{% endif %}</h2></div>
+<a href="{% url 'report_csv' 'overview' %}" class="mg-button mg-button--outline"><i class="bi bi-filetype-csv"></i> {% trans 'Export CSV' %}</a></div>
+<section class="dashboard-overview dashboard-compact" aria-label="{% trans 'Academy overview' %}">
+  <div class="today-card"><div class="today-card-icon"><i class="bi bi-calendar-event"></i></div><div><span>{% trans 'Today' %}</span><strong>{{ today|date:'l, F j, Y' }}</strong></div></div>
+  <a class="overview-tile" href="{% url 'course_list' %}"><i class="bi bi-bookmark-check"></i><div><strong>{{ active_courses_count }}</strong><span>{% trans 'Active courses' %}</span></div></a>
+  <a class="overview-tile" href="{% url 'student_list' %}"><i class="bi bi-people"></i><div><strong>{{ students_count }}</strong><span>{% if is_instructor_role %}{% trans 'My students' %}{% else %}{% trans 'Students' %}{% endif %}</span></div></a>
+  <a class="overview-tile" href="{% url 'academic_calendar' %}"><i class="bi bi-calendar2-week"></i><div><strong>{{ upcoming_sessions_count }}</strong><span>{% trans 'Upcoming class sessions' %}</span></div></a>
+</section>
+<div class="dashboard-minimal-columns">
+  <section class="mg-panel dashboard-focus-panel"><div class="mg-toolbar"><h3 class="mg-section-title">{% trans 'Quick access' %}</h3></div>
+    <div class="dashboard-action-grid">
+    {% if can_manage %}
+      <a href="{% url 'add_student' %}"><i class="bi bi-person-plus"></i> {% trans 'New Student' %}</a>
+      <a href="{% url 'add_course' %}"><i class="bi bi-journal-plus"></i> {% trans 'New Course' %}</a>
+      <a href="{% url 'add_register' %}"><i class="bi bi-person-check"></i> {% trans 'Register Student' %}</a>
+    {% else %}
+      <a href="{% url 'course_list' %}"><i class="bi bi-book-open"></i> {% trans 'My courses' %}</a>
+      <a href="{% url 'attendance_dashboard' %}"><i class="bi bi-clipboard-check"></i> {% trans 'Attendance' %}</a>
+      <a href="{% url 'exam_list' %}"><i class="bi bi-journal-text"></i> {% trans 'Manage Grades' %}</a>
+    {% endif %}
+      <a href="{% url 'survey_dashboard' %}"><i class="bi bi-ui-checks-grid"></i> {% trans 'Surveys' %}</a>
+    </div>
+  </section>
+  <section class="mg-panel dashboard-focus-panel"><div class="mg-toolbar"><h3 class="mg-section-title">{% trans 'Upcoming exams' %}</h3><a class="panel-view-all" href="{% url 'exam_list' %}">{% trans 'All exams' %}</a></div>
+    <div class="dashboard-next-items">{% for exam in upcoming_exams %}
+      <a href="{% url 'exam_detail' exam.pk %}"><span class="dashboard-next-icon"><i class="bi bi-calendar-check"></i></span><span><strong>{{ exam.title }}</strong><small>{{ exam.course.title }} · {{ exam.exam_date|date:'M j, Y' }}</small></span><i class="bi bi-chevron-right"></i></a>
+    {% empty %}<p class="mg-muted">{% trans 'No upcoming exams.' %}</p>{% endfor %}</div>
+  </section>
+</div>
+{% endblock %}

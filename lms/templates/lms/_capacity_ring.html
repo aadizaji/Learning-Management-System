@@ -1,0 +1,8 @@
+{% load i18n %}
+<div class="mg-capacity">
+    <div class="mg-ring {% if course.capacity_percent >= 100 %}mg-ring--full{% endif %} {% if large %}mg-ring--large{% endif %}" style="--capacity-offset:{{ course.capacity_offset }}" role="progressbar" aria-label="{% trans 'Course capacity occupied' %}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ course.capacity_percent }}">
+        <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><circle class="mg-ring-track" cx="50" cy="50" r="42"></circle><circle class="mg-ring-value" cx="50" cy="50" r="42"></circle></svg>
+        <span class="mg-ring-label">{{ course.capacity_percent }}%</span>
+    </div>
+    <div class="mg-capacity-stats"><strong>{{ course.occupied_seats }} / {{ course.capacity }} seats</strong><span>{{ course.available_seats }} available</span></div>
+</div>

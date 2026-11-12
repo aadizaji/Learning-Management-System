@@ -1,0 +1,22 @@
+.survey-two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-block:20px}
+.survey-two-col .mg-panel,.survey-card{min-width:0}
+.survey-card h3{font-size:1.15rem;margin:14px 0}
+.survey-measure{display:flex;align-items:baseline;gap:9px;margin:18px 0}
+.survey-measure strong{font-size:2rem;font-weight:800}
+.survey-measure span{opacity:.7;font-size:.85rem}
+.survey-person{display:flex;gap:12px;align-items:center;padding:14px 8px;border-bottom:1px solid var(--line,rgba(128,128,128,.15));text-decoration:none;color:inherit;transition:transform .18s,background .18s;border-radius:10px}
+.survey-person:hover{transform:translateY(-2px);background:rgba(13,148,136,.07)}.survey-person span{flex:1}.survey-person small{opacity:.6}
+.survey-form{max-width:850px;margin:auto}.survey-form-row{display:grid;gap:8px;margin:14px 0}.survey-form-row input,.survey-form-row select{width:100%;padding:10px;border:1px solid #abb6c5;border-radius:10px;background:transparent;color:inherit}
+.survey-question-list{display:grid;gap:9px}.survey-question-item{display:flex;gap:14px;justify-content:space-between;align-items:center;padding:14px;border:1px solid rgba(128,128,128,.16);border-radius:12px}.survey-question-item p{margin:8px 0 0}.survey-question-item small{opacity:.6}
+.survey-rating-item{border:1px solid rgba(128,128,128,.16);border-radius:15px;padding:18px;margin:20px 0;min-width:0;animation:survey-fade .3s ease both}.survey-rating-item legend{float:none;font-size:1rem;font-weight:700;width:auto;padding:0 7px;max-width:100%}
+.survey-radios{display:flex;gap:10px;flex-wrap:wrap}.survey-radio{cursor:pointer;position:relative}.survey-radio input{position:absolute;opacity:0;width:1px;height:1px}.survey-radio span{display:flex;align-items:center;gap:6px;border:1px solid rgba(128,128,128,.3);padding:10px 14px;border-radius:12px;transition:all .2s ease}.survey-radio i{opacity:.5;color:#d89c37}.survey-radio input:checked+span{background:rgba(13,148,136,.14);border-color:#0d9488;color:inherit;transform:translateY(-2px)}.survey-radio input:checked+span i{opacity:1}.survey-radio input:focus-visible+span{outline:2px solid #0d9488;outline-offset:3px}
+@keyframes survey-fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.survey-two-col{grid-template-columns:1fr}.survey-radio span{padding:9px 10px}}
+@media(prefers-reduced-motion:reduce){.survey-rating-item{animation:none}.survey-person,.survey-radio span{transition:none}}
+
+/* Question-bank actions stay usable in narrow / RTL layouts. */
+.survey-question-info{flex:1;min-width:180px;overflow-wrap:anywhere}
+.survey-question-actions{justify-content:flex-end}
+.survey-question-actions form{margin:0}
+.survey-question-actions .mg-button{white-space:nowrap}
+@media(max-width:760px){.survey-question-item{align-items:flex-start;flex-direction:column}.survey-question-actions{width:100%;justify-content:flex-start}}
